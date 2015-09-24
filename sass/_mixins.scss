@@ -1,1 +1,6 @@
 // mixins here
+
+@mixin font-smoothing($value: antialiased) {
+  -webkit-font-smoothing: $value;
+  -moz-osx-font-smoothing: grayscale;
+}

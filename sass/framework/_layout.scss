@@ -236,6 +236,10 @@
 
   .row {
     padding: 0 5.5%;
+
+    &.hero {
+      padding: 0;
+    }
     &.tp-margin, &.margin {
       padding-left: 28px;
       padding-right: 28px;

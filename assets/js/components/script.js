@@ -9,14 +9,13 @@
 					// expBtnText = $('.bttn-exp').text(),
 					// techFrame,
 					$window = $(window),
-					vidWrapper = $('.video-player'),
 					// btnPlay = $('.vid-btn'),
 					// btnText = btnPlay.text(),
 					//poster = $('.vid-ph'),
 					// iframe = $('#vid1')[0],
 					// vid = $f(iframe),
 					// vidPlaying = false,
-					owl = $('.owl-carousel'),
+					$carousel = $('.carousel'),
 					//readMore = $('.read-more'),
 					// $newsTemplate = $('.hbs-news-posts'),
 
@@ -81,15 +80,15 @@
 					resizeHero = function (isMobile) {
 						if (isMobile) {
 							var vHeight = $window.height();
-							vidWrapper.css('height', vHeight + 'px');
+							$('.hero, .slide').css('height', vHeight + 'px');
 						} else {
-							vidWrapper.css('height', 'auto');
+							$('.hero, .slide').css('height', 'auto');
 						}
 					},
 
 					handleNav = function (e) {
 						header.toggleClass('menu-open');
-						header.hasClass('fixed') ? {} : header.addClass('fixed');
+						//header.hasClass('fixed') ? {} : header.addClass('fixed');
 						e.preventDefault();
 					};
 
@@ -273,44 +272,22 @@
 						resizeHero(true);
 					}
 
-					if ($window.innerWidth() < 481) {
-						// setCapHeight();
-					}
-
-	        owl.owlCarousel({
-						items: 3,
-						responsiveClass: true,
-						nav: true,
-						responsive:{
-							0:{
-								items:1
-							},
-							480: {
-								items: 2
-							},
-							767:{
-								items:3
-							},
-							1024:{
-								items:3
-							}
-						}
-					});
-
-				owl.on('translated.owl.carousel', function(e){
-					var $this = $(this),
-							items = $this.find('.owl-item'),
-							dots = $this.find('.owl-dot'),
-							// slide = e.item.index,
-							lastItemIndex = e.item.count-1,
-							lastDotIndex = (dots.length)-1;
-					
-					if (items.eq(lastItemIndex).hasClass('active')) {
-						dots.removeClass('active').eq(lastDotIndex).addClass('active');
-					}
-
-					// handleCarData(slide);
-				});
+          // Init gallery
+				  $carousel.slick({
+				    slidesToShow: 1,
+				    slidesToScroll: 1,
+				    arrows: false,
+				    swipe: true,
+				    autoplay: true,
+				    pauseOnHover: true,
+				    autoplaySpeed: 60000,
+				    infinite: true,
+				    speed: 800,
+				    fade: true,
+				    dots: true,
+				    slide: '.slide',
+				    cssEase: 'linear'
+				  });
 
 				// jQuery.validator.addMethod('checkEmail', function(value) {
 				// 	if (/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(value)) {
@@ -389,8 +366,5 @@
 					resizeHero(false);
 				}
 
-				if ($(this).innerWidth() < 481) {
-					// setCapHeight();
-				}
 			});
 		});

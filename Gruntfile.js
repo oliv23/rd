@@ -61,7 +61,6 @@ module.exports = function (grunt) {
       },
       library: {
         src: ['assets/js/lib/single/jquery-2.1.1.js',
-              'assets/js/lib/single/jquery.tooltipster.min.js',
               'assets/js/lib/*.js'],
         dest: 'dist/assets/js/lib.js'
       }
