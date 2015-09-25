@@ -46,6 +46,11 @@
       position: relative;
     }
 
+    &.center {
+      text-align: center;
+      * { display: inline-block;}
+    }
+
     &.pad-top {
       padding-top: 40px;
     }
@@ -69,7 +74,7 @@
       display: inline-block;
       //float: left;
       margin-left: 20px;
-      text-align: left;
+      // text-align: left;
 
       &.dw-mgZero {
         margin-left: 0;

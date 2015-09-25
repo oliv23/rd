@@ -123,7 +123,7 @@ a {
 
 a:hover,a:focus,a:active {
     text-decoration: none;
-    color: $orange;
+    color: $greyBlue;
 }
 
 a:focus,a:active {
@@ -167,10 +167,18 @@ h1 {
 }
 
 h2 {
+    font-family: 'supramedium';
     font-size: 24px;
     font-size: 2.4rem;
-    line-height: 20px;
-    line-height: 2rem;
+    line-height: 26px;
+    line-height: 2.6rem;
+    letter-spacing: 3px;
+    letter-spacing: .3rem;
+    color: $greyBlue;
+    padding: 0;
+    margin: 20px 0;
+    text-transform: uppercase;
+    @include font-smoothing();
 }
 
 h3 {
@@ -189,17 +197,23 @@ h3 {
 }
 
 h4 {
-    font-size: 15px;
-    font-size: 1.5rem;
-    padding: 10px 0 10px
+  font-size: 15px;
+  font-size: 1.5rem;
+  padding: 10px 0 10px
 }
 
 p {
-    font-size: 16px;
-    font-size: 1.6rem;
-    line-height: 22px;
-    line-height: 2.2rem;
-    padding: 0;
+  font-family: 'supralight';
+  font-size: 16px;
+  font-size: 1.6rem;
+  line-height: 22px;
+  line-height: 2.2rem;
+  letter-spacing: 0.2px;
+  letter-spacing: 0.02rem;
+  color: $grey;
+  padding: 0;
+  margin: 0;
+  @include font-smoothing();
 }
 
 ul {
@@ -297,8 +311,12 @@ a.skip:active,a.skip:focus {
   &.menu-open {
     height: 110px;
 
-    .nav li {
-      opacity: 1;
+    .nav {
+      top: 0;
+
+      li {
+        opacity: 1;
+      }
     }
 
     //start Burger
@@ -309,6 +327,7 @@ a.skip:active,a.skip:focus {
     }
 
     .nav-btn span:nth-child(2) {
+      top: 15px;
       -webkit-transform: rotate(45deg);
       -moz-transform: rotate(45deg);
       -o-transform: rotate(45deg);
@@ -353,11 +372,14 @@ a.skip:active,a.skip:focus {
   }
 
   .nav {
+    position: relative;
+    top: -40px;
     display: inline-block;
     text-align: center;
     font-size: 0;
+    transition: all .4s ease;
 
-    &:hover, &:focus, &:active {
+    &:hover {
       a {
           opacity: .4;
         }
@@ -369,7 +391,7 @@ a.skip:active,a.skip:focus {
       line-height: 110px;
       vertical-align: middle;
       opacity: 0;
-      transition: opacity .4s ease;
+      transition: all .4s ease;
     }
 
     a {
@@ -380,9 +402,9 @@ a.skip:active,a.skip:focus {
       display: block;
       color: $white;
       text-transform: uppercase;
-      transition: opacity .4s ease;
+      transition: all .4s ease;
 
-      &:hover, &:focus, &:active {
+      &:hover {
         opacity: 1;
       }
     }
@@ -408,10 +430,10 @@ a.skip:active,a.skip:focus {
 // START BURGER
   .nav-btn {
     width: 42px;
-    height: 36px;
+    height: 37px;
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 35px;
+    right: 35px;
     margin: 0;
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
@@ -429,7 +451,6 @@ a.skip:active,a.skip:focus {
       height: 6px;
       width: 100%;
       background: $white;
-      border-radius: 9px;
       opacity: 1;
       left: 0;
       -webkit-transform: rotate(0deg);
@@ -448,7 +469,8 @@ a.skip:active,a.skip:focus {
     top: 0px;
   }
 
-  .nav-btn span:nth-child(2),#nav-icon3 span:nth-child(3) {
+  .nav-btn span:nth-child(2),
+  .nav-btn span:nth-child(3) {
     top: 15px;
   }
 
@@ -460,21 +482,21 @@ a.skip:active,a.skip:focus {
 
 
   &.fixed {
-    background-color: $white;
+    background-color: $greyBlue;
     box-shadow: 0px 7px 12px -7px rgba(50,50,50,0.75);
   }
 }
 
 .hero {
   min-height: 768px;
-  transition: height .4s ease-out;
+  margin-bottom: 40px;
+  //transition: height .4s ease-out;
 
   .slide {
     min-height: 768px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: $black;
 
     &.slide1 {
       background-image: url(/assets/img/components/hero_home1.jpg);
@@ -503,7 +525,7 @@ a.skip:active,a.skip:focus {
 
 .wrapper-intro {
   position: absolute;
-  bottom:75px;
+  bottom:80px;
   left: 0;
   right: 0;
   text-align: center;
@@ -538,14 +560,77 @@ a.skip:active,a.skip:focus {
   }
 }
 
-.wrapper-sub-intro {
-  padding: 30px 0;
-  text-align: center;
-
-  * {
+.grid {
+  margin: 40px auto 0;
+  .item {
+    width: 50%;
+    min-height: 384px;
+    background-color: $black;
     display: inline-block;
-    color: #fff;
-    width: 100%;
+    position: relative;
+  }
+
+  @for $i from 1 through 6 {
+    .item#{$i} .img {
+      background-image: url(/assets/img/components/item#{$i}.jpg)
+    }
+  }
+
+  .img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all .2s ease-in;
+    z-index: 1;
+
+    &:hover, &:focus, &:active {
+      opacity: .6;
+      + .wrap { 
+        opacity: 1;
+        transition-delay: 0.2s;
+      }
+    }
+  } 
+
+  .wrap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: table-cell;
+    vertical-align: middle;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 2;
+    transition: all .2s ease-in;
+    transition-delay: 0s;
+  }
+
+  .item-h,
+  .item-t  {
+    display: inline-block;
+    color: $white;
+    text-align: center;
+    max-width: 80%;
+  }
+
+  .item-h {
+    font-family: 'suprablack';
+    font-size: 42px;
+    font-size: 4.2rem;
+    line-height: 34px;
+    line-height: 3.4rem;
+
+  }
+  .item-t {
+    line-height: 18px;
+    line-height: 1.8rem;
   }
 }
 
