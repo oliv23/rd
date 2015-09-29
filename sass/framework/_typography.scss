@@ -49,6 +49,18 @@
 }
 
 @font-face {
+    font-family: 'suprademibold';
+    src: url('../fonts/Supra-Demibold-webfont.eot');
+    src: url('../fonts/Supra-Demibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Supra-Demibold-webfont.woff2') format('woff2'),
+         url('../fonts/Supra-Demibold-webfont.woff') format('woff'),
+         url('../fonts/Supra-Demibold-webfont.ttf') format('truetype'),
+         url('../fonts/Supra-Demibold-webfont.svg#suprademibold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
   font-family: 'BlackTieBold';
   src: url('../fonts/BlackTie-Bold-webfont.eot?v=1.0.0');
   src: url('../fonts/BlackTie-Bold-webfont.eot?#iefix&v=1.0.0') format('embedded-opentype'), url('../fonts/BlackTie-Bold-webfont.woff2?v=1.0.0') format('woff2'), url('../fonts/BlackTie-Bold-webfont.woff?v=1.0.0') format('woff'), url('../fonts/BlackTie-Bold-webfont.ttf?v=1.0.0') format('truetype'), url('../fonts/BlackTie-Bold-webfont.svg?v=1.0.0#black_tiebold') format('svg');
@@ -60,5 +72,12 @@
   src: url('../fonts/BlackTie-Light-webfont.eot?v=1.0.0');
   src: url('../fonts/BlackTie-Light-webfont.eot?#iefix&v=1.0.0') format('embedded-opentype'), url('../fonts/BlackTie-Light-webfont.woff2?v=1.0.0') format('woff2'), url('../fonts/BlackTie-Light-webfont.woff?v=1.0.0') format('woff'), url('../fonts/BlackTie-Light-webfont.ttf?v=1.0.0') format('truetype'), url('../fonts/BlackTie-Light-webfont.svg?v=1.0.0#black_tielight') format('svg');
   font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('../fonts/fontawesome-webfont.eot?v=4.4.0');
+  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.4.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff2?v=4.4.0') format('woff2'), url('../fonts/fontawesome-webfont.woff?v=4.4.0') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.4.0') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.4.0#fontawesomeregular') format('svg');
+  font-weight: normal;
   font-style: normal;
 }
