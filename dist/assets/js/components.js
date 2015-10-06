@@ -101,7 +101,7 @@
 		    swipe: true,
 		    autoplay: true,
 		    pauseOnHover: true,
-		    autoplaySpeed: 60000,
+		    autoplaySpeed: 4000,
 		    infinite: true,
 		    speed: 800,
 		    fade: true,
@@ -111,13 +111,46 @@
 		  });
 
 		  var $container = $('.grid');
-			// init
+
+			// init			
 			$container.packery({
 			  itemSelector: '.item',
 			  gutter: 0,
 			  percentPosition: true
 			});
 
+			var panels = $('.service .panel'),
+					terms = [],
+					panelTerms = [],
+					count = 0;
+
+			function panelAnim(arr) {
+			    if (count == arr.length) {
+			        count = 0;
+			    }
+
+			    panelTerms = terms[count].split(',');
+
+			    var term = panelTerms[Math.floor(Math.random() * panelTerms.length)];
+			    
+			    $(panels).removeClass('anim')
+						.eq(count).addClass('anim')
+							.find('.back p').text(term);
+
+					count++;
+			    
+			    setTimeout(function () {
+			        panelAnim(panels);
+			    }, 1700);
+			}
+
+			if (panels.length) {
+				$(panels).each(function () {
+					terms.push($(this).data('terms'));
+				});
+				panelAnim(panels);
+			}
+			
 
 			$window.on('resize', function () {
 				if ($(this).innerWidth() < 1025) {

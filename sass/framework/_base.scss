@@ -695,7 +695,7 @@ a.skip:active,a.skip:focus {
             backface-visibility: hidden;
 
     /* -- transition is the magic sauce for animation -- */
-            transition: all .4s ease-in-out;
+            transition: all .2s ease-in-out;
   }
 
   .panel .front p {
@@ -750,8 +750,8 @@ a.skip:active,a.skip:focus {
        -moz-backface-visibility: hidden;
             backface-visibility: hidden;
 
-    -webkit-transition: all .4s ease-in-out;
-            transition: all .4s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
   }
 
   .panel .back p {
@@ -780,25 +780,25 @@ a.skip:active,a.skip:focus {
   /* -- X axis rotation for click panel -- */
   .panel .front {
     cursor: pointer;
-    -webkit-transform: rotateX(0deg);
-       -moz-transform: rotateX(0deg);
-            transform: rotateX(0deg);
+    -webkit-transform: rotateY(0deg);
+       -moz-transform: rotateY(0deg);
+            transform: rotateY(0deg);
   }
   .panel.anim .front {
-    -webkit-transform: rotateX(180deg);
-       -moz-transform: rotateX(180deg);
-            transform: rotateX(180deg);
+    -webkit-transform: rotateY(180deg);
+       -moz-transform: rotateY(180deg);
+            transform: rotateY(180deg);
   }
   .panel .back {
     cursor: pointer;
-    -webkit-transform: rotateX(-180deg);
-       -moz-transform: rotateX(-180deg);
-            transform: rotateX(-180deg);
+    -webkit-transform: rotateY(-180deg);
+       -moz-transform: rotateY(-180deg);
+            transform: rotateY(-180deg);
   }
   .panel.anim .back {
-    -webkit-transform: rotateX(0deg);
-       -moz-transform: rotateX(0deg);
-            transform: rotateX(0deg);
+    -webkit-transform: rotateY(0deg);
+       -moz-transform: rotateY(0deg);
+            transform: rotateY(0deg);
   }
 
 
@@ -806,7 +806,7 @@ a.skip:active,a.skip:focus {
   display: inline-block;
   width: 188px;
   height: 140px;
-  margin: 0 2px;
+  margin: 20px 2px;
   opacity: 1;
   transition: opacity .4s;
 
