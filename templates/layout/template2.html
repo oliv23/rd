@@ -9,50 +9,29 @@
 	<!--(bake /templates/structure/html-header.html)-->
 </head>
 
-<body id="home">
+<body>
 <div><a href="#skipnav" class="skip">Skip to main content</a></div>
 
 	<div id="wrapper" class="wrapper">
 
 		<!--(bake /templates/structure/header.html)-->
 
-			<div class="main off-area">
-			    <a id="skipnav" tabindex="-1"></a>
+			<div class="main off-area">			    
 			    <div class="row relative hero">
 			    	<div class="carousel">
-				    	<div class="slide slide1">
-				    		<div class="wrapper-intro">
-					    		<h1>BAUER EMPIRE MAGAZINE</h1>
-					    		<p class="intro">Evel moluptat hicta verfercium est volor sus aut maximos nobitam, sitaestem num hicta verfercium est volor sus aut maximos nobitam, sitaestem num</p>
-					    		<a href="#" class="bttn">Learn More</a>
-					    	</div>
-				    	</div>
-				    	<div class="slide slide2">
+				    	<div class="slide" style="background-image: url(./assets/img/components/hero_home2.jpg);">
 				    		<div class="wrapper-intro">
 					    		<h1>healthy food guide</h1>
 					    		<p class="intro">Evel moluptat hicta verfercium est volor sus aut maximos nobitam, sitaestem num hicta verfercium est volor sus aut maximos nobitam, sitaestem num</p>
-					    		<a href="#" class="bttn">Learn More</a>
-					    	</div>
-				    	</div>
-				    	<div class="slide slide3">
-				    		<div class="wrapper-intro">
-					    		<h1>BAUER</h1>
-					    		<p class="intro">Evel moluptat hicta verfercium est volor sus aut maximos nobitam, sitaestem num hicta verfercium est volor sus aut maximos nobitam, sitaestem num</p>
-					    		<a href="#" class="bttn">Learn More</a>
-					    	</div>
-				    	</div>
-				    	<div class="slide slide4">
-				    		<div class="wrapper-intro">
-					    		<h1>OUR SERVICES</h1>
-					    		<p class="intro">Evel moluptat hicta verfercium est volor sus aut maximos nobitam, sitaestem num hicta verfercium est volor sus aut maximos nobitam, sitaestem num</p>
-					    		<a href="#" class="bttn">Learn More</a>
+					    		<a href="#anchor" class="bttn arrow"></a>
 					    	</div>
 				    	</div>
 				    </div>
 			    </div>
 
-			    <div class="row grid">
-			    	<div class="item item1">
+			    <a id="skipnav" tabindex="-1"></a>
+			    <div id="anchor" class="row grid">
+			    	<div class="item item1 wow fadeIn">
 			    		<a href="#" class="img"></a>
 			    		<div class="wrap">
 			    			<div class="inner">
@@ -61,7 +40,7 @@
 					    	</div>
 				    	</div>
 			    	</div>
-			    	<div class="item item2">
+			    	<div class="item item2 wow fadeIn">
 			    		<a href="#" class="img"></a>
 			    		<div class="wrap">
 			    			<div class="inner">
@@ -70,7 +49,7 @@
 					    	</div>
 				    	</div>
 			    	</div>
-			    	<div class="item item3">
+			    	<div class="item item3 wow fadeIn">
 			    		<a href="#" class="img"></a>
 			    		<div class="wrap">
 			    			<div class="inner">
@@ -79,7 +58,7 @@
 					    	</div>
 				    	</div>
 			    	</div>
-			    	<div class="item item4">
+			    	<div class="item item4 wow fadeIn">
 			    		<a href="#" class="img"></a>
 			    		<div class="wrap">
 			    			<div class="inner">
@@ -88,7 +67,7 @@
 					    	</div>
 				    	</div>
 			    	</div>
-			    	<div class="item item5">
+			    	<div class="item item5 wow fadeIn">
 			    		<a href="#" class="img"></a>
 			    		<div class="wrap">
 			    			<div class="inner">
@@ -97,7 +76,7 @@
 					    	</div>
 				    	</div>
 			    	</div>
-			    	<div class="item item6">
+			    	<div class="item item6 wow fadeIn">
 			    		<a href="#" class="img"></a>
 			    		<div class="wrap">
 			    			<div class="inner">
@@ -107,13 +86,29 @@
 				    	</div>
 			    	</div>
 			    </div>
+
+			    <div class="row pad-top bg-greyBlue center">
+			    	<div class="pane base12">
+			    		<h4 class="left wow fadeIn">Some of our clients</h4>
+			    	</div>
+			    </div>
+			    <div class="row bg-greyBlue center">
+			    	<div class="pane base12">
+			    		<a href="#" class="client time wow fadeInUp"></a>
+			    		<a href="#" class="client waitrose wow fadeInUp" data-wow-delay="0.1s"></a>
+			    		<a href="#" class="client boden wow fadeInUp" data-wow-delay="0.2s"></a>
+			    		<a href="#" class="client argos wow fadeInUp" data-wow-delay="0.3s"></a>
+			    		<a href="#" class="client bauer wow fadeInUp" data-wow-delay="0.4s"></a>
+			    	</div>
+			    </div>			    
+
 			    <footer class="row pad-top bg-black center">
 			    	<div class="pane base12">
-			    		<h3 class="left">Get in touch</h3>
+			    		<h4 class="left">Get in touch</h4>
 			    		<ul class="right social">
-			    			<li><a href="#" class="social-icon social_twitter"></a>
-			    			<li><a href="#" class="social-icon social_linkedin"></a>
-			    			<li><a href="#" class="social-icon social_pinterest"></a>
+			    			<li><a href="http://twitter.com/rhapsodydigital" target="_blank" class="social-icon social_twitter"></a>
+			    			<li><a href="https://www.linkedin.com/company/rhapsody-limited" target="_blank" class="social-icon social_linkedin"></a>
+			    			<li><a href="https://uk.pinterest.com" target="_blank" class="social-icon social_pinterest"></a>
 			    		</ul>
 			    	</div>
 			    	<div class="pane base12 no-margin">

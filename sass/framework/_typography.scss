@@ -73,6 +73,13 @@
 }
 
 @font-face {
+  font-family: 'BlackTieRegular';
+  src: url('../fonts/BlackTie-Regular-webfont.eot?v=1.0.0');
+  src: url('../fonts/BlackTie-Regular-webfont.eot?#iefix&v=1.0.0') format('embedded-opentype'), url('../fonts/BlackTie-Regular-webfont.woff2?v=1.0.0') format('woff2'), url('../fonts/BlackTie-Regular-webfont.woff?v=1.0.0') format('woff'), url('../fonts/BlackTie-Regular-webfont.ttf?v=1.0.0') format('truetype'), url('../fonts/BlackTie-Regular-webfont.svg?v=1.0.0#black_tieregular') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
   font-family: 'BlackTieBold';
   src: url('../fonts/BlackTie-Bold-webfont.eot?v=1.0.0');
   src: url('../fonts/BlackTie-Bold-webfont.eot?#iefix&v=1.0.0') format('embedded-opentype'), url('../fonts/BlackTie-Bold-webfont.woff2?v=1.0.0') format('woff2'), url('../fonts/BlackTie-Bold-webfont.woff?v=1.0.0') format('woff'), url('../fonts/BlackTie-Bold-webfont.ttf?v=1.0.0') format('truetype'), url('../fonts/BlackTie-Bold-webfont.svg?v=1.0.0#black_tiebold') format('svg');

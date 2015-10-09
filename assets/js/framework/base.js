@@ -333,75 +333,10 @@ $(function () {
     e.preventDefault();
     $(body).toggleClass('framework');
   });
-
-  $(document).on( 'click', '.toggle-grid-type', function(e) {
-    e.preventDefault();
-    $(body).toggleClass('gutterless');
-  });
-
-  $(document).on( 'click', '.toggle-ads', function(e) {
-    e.preventDefault();
-    $(html).toggleClass('takeover-active');
-  });
 });
 
-/* COMPONENT - placeholderText 1.0 */
 
-// window.rm  = window.rm || {};
-// window.rm.placeholderText = window.rm.placeholderText || {};
-
-// window.rm.placeholderText = (function ($) {
-//     'use strict';
-
-//     $(function (){
-//         if (!Modernizr.input.placeholder) {
-
-//             $('[placeholder]').focus(function () {
-//                 var input = $(this);
-//                 if (input.val() === input.attr('placeholder')) {
-//                     input.val('');
-//                     input.removeClass('placeholder');
-//                 }
-//             }).blur(function () {
-//                 var input = $(this);
-//                 if (input.val() === '' || input.val() === input.attr('placeholder')) {
-//                     input.addClass('placeholder');
-//                     input.val(input.attr('placeholder'));
-//                 }
-//             }).blur();
-//             $('[placeholder]').parents('form').submit(function () {
-//                 $(this).find('[placeholder]').each(function () {
-//                     var input = $(this);
-//                     if (input.val() === input.attr('placeholder')) {
-//                         input.val('');
-//                     }
-//                 });
-//             });
-//         }
-//     });
-    
-// }(jQuery));
-
-
-function getStyle(el,styleProp) {
-    var x = document.getElementById(el);
-    if (x.currentStyle)
-        var y = x.currentStyle[styleProp];
-    else if (window.getComputedStyle)
-        var y = document.defaultView.getComputedStyle(x,null).getPropertyValue(styleProp);
-    return y;
-};
-
-var setAdWidth = function () {
-    var marginL = getStyle('wrapper', 'margin-left'),
-        marginR = getStyle('wrapper', 'margin-right'); 
-    $('.ad-left').css('width', marginL);
-    $('.ad-right').css('width', marginR);
-}
-
-
-$(function (){
-    
+$(function (){    
     //remove touch delay on touch devices
     var attachFastClick = Origami.fastclick;
         attachFastClick(document.body);

@@ -16,7 +16,11 @@ $lightBlue: #a5c3c9;
 $grey: #7d7d7d;
 $greyBlue: #91abbd;
 
-.bg-greyBlue {background-color: $greyBlue; color: $white;}
+.bg-greyBlue {
+  background-color: $greyBlue; color: $white;
+
+  h1,h2,h3,h4,h5,h6 { color: $white;}
+}
 .bg-black {background-color: $black; color: $white;}
 
 
@@ -165,26 +169,44 @@ h2 {
     letter-spacing: .3rem;
     color: $greyBlue;
     padding: 0;
-    margin: 20px 0;
+    margin: 0 0 20px;
     text-transform: uppercase;
     @include font-smoothing();
 }
 
 h3 {
-  font-family: 'suprademibold';
-    font-size: 28px;
-    font-size: 2.8rem;
-    line-height: 33px;
-    line-height: 3.3rem;
+    font-family: 'supramedium';
+    font-size: 22px;
+    font-size: 2.2rem;
+    line-height: 26px;
+    line-height: 2.6rem;
     padding: 0;
-    margin: 0;
+    margin: 20px 0;
+    color: $greyBlue;
+    text-transform: uppercase;
     @include font-smoothing();
 }
 
 h4 {
-  font-size: 15px;
-  font-size: 1.5rem;
-  padding: 10px 0 10px
+  font-family: 'suprademibold';
+  font-size: 24px;
+  font-size: 2.4rem;
+  line-height: 29px;
+  line-height: 2.9rem;
+  padding: 0;
+  color: $greyBlue;
+  @include font-smoothing();
+}
+
+h5 {
+  font-family: 'supramedium';
+  font-size: 14px;
+  font-size: 1.4rem;
+  line-height: 16px;
+  line-height: 1.6rem;
+  padding: 13px 0;
+  color: $greyBlue;
+  @include font-smoothing();
 }
 
 p {
@@ -236,18 +258,33 @@ ul li,ol li {
     background: $greyBlue;
     color: $white;
   }
+
+  &.arrow {
+    font-family: 'BlackTieLight';
+    font-size: 28px;
+    font-size: 2.8rem;
+    line-height: 34px;
+    line-height: 3.4rem;
+    border: none;
+    background: transparent;
+
+    &:hover, &:focus, &:active {
+      background: transparent;
+    }
+  }
 }
 
 .skip {
     position: absolute;
-    left: -999em
+    left: -999em;
+    z-index: 9999;
 }
 
 a.skip:active,a.skip:focus {
     top: 0;
     left: 0;
     color: #fff;
-    background: #01a7e3;
+    background: $greyBlue;
     font-size: 1.1em;
     display: block;
     padding: 0.4em;
@@ -256,6 +293,11 @@ a.skip:active,a.skip:focus {
     width: 14em;
     text-align: center;
     font-weight: bold
+}
+
+#skipnav {
+  float: left;
+  width: 100%;
 }
 
 .fade-out {
@@ -453,29 +495,36 @@ a.skip:active,a.skip:focus {
   }
 }
 
+.carousel {
+  position: relative;
+  overflow: hidden;
+  height: 768px;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: url(../img/ajax-loader.gif) no-repeat center transparent;
+  }
+
+  &.slick-initialized {
+    &:before {
+      display: none;
+    }
+  }
+}
+
 .hero {
   min-height: 768px;
-  margin-bottom: 40px;
-  //transition: height .4s ease-out;
 
   .slide {
     min-height: 768px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-
-    &.slide1 {
-      background-image: url(/assets/img/components/hero_home1.jpg);
-    }
-    &.slide2 {
-      background-image: url(/assets/img/components/hero_home2.jpg);
-    }
-    &.slide3 {
-      background-image: url(/assets/img/components/hero_home3.jpg);
-    }
-    &.slide4 {
-      background-image: url(/assets/img/components/hero_home4.jpg);
-    }
   }
 
   .bttn {
@@ -485,6 +534,13 @@ a.skip:active,a.skip:focus {
     &:hover, &:active, &:focus {
       background: $white;
       color: $greyBlue;
+    }
+
+    &.arrow {
+      &:hover, &:active, &:focus {
+        background: transparent;
+        color: $greyBlue;
+      }
     }
   }
 }
@@ -526,8 +582,50 @@ a.skip:active,a.skip:focus {
   }
 }
 
+aside {    
+  h4 {
+    border-top: 4px solid $greyBlue;
+    font-size: 18px;
+    font-size: 1.8rem;
+    line-height: 22px;
+    line-height: 2.2rem;
+    padding: 5px 0 0;
+    margin-bottom: 15px;
+  }
+
+  p {
+    font-family: 'supranormal';
+    font-size: 12px;
+    font-size: 1.2rem;
+    line-height: 20px;
+    line-height: 2.0rem;
+  }
+
+  .subject, ul {
+    margin-bottom: 40px;
+  }
+
+  ul:not(.social) {
+    li {
+      &:before {
+        content: '\F08C';
+        font-family: 'BlackTieRegular';
+        font-size: 12px;
+        font-size: 1.2rem;
+        line-height: 20px;
+        line-height: 2rem;
+        float: left;
+      }
+
+      p {
+        margin-left: 17px;
+      }
+    }
+  }
+}
+
 .grid {
-  margin: 60px auto;
+  margin: auto;
   .item {
     width: 50%;
     height: 384px;
@@ -613,6 +711,10 @@ a.skip:active,a.skip:focus {
   }
 }
 
+.service-wrap {
+  display: inline-block;
+}
+
 .service {
   display: inline-block;
   margin: 0 35px;
@@ -634,13 +736,7 @@ a.skip:active,a.skip:focus {
     }
   }
 
-  h4 {
-    font-family: 'supramedium';
-    font-size: 14px;
-    font-size: 1.4rem;
-    line-height: 15px;
-    line-height: 1.5rem;
-    color: $greyBlue;
+  h5 {
     text-transform: uppercase;
     transition: all .4s ease;
   }
@@ -971,6 +1067,11 @@ footer {
   text-align: center;
 
   h3 {
+    font-family: 'suprademibold';
+    font-size: 28px;
+    font-size: 2.8rem;
+    line-height: 33px;
+    line-height: 3.3rem;
     color: $greyBlue;
   }
 
@@ -1126,6 +1227,10 @@ footer {
         }
       }
     }
+  }
+
+  .carousel {
+    height: 100vh;
   }
 
   .wrapper-partner {
