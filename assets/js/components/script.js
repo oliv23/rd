@@ -34,9 +34,9 @@
 					resizeHero = function (isMobile) {
 						if (isMobile) {
 							var vHeight = $window.height();
-							$('.hero, .slide').css('height', vHeight + 'px');
+							$('.hero, .hero .slide').css('height', vHeight + 'px');
 						} else {
-							$('.hero, .slide').css('height', 'auto');
+							$('.hero, .hero .slide').css('height', 'auto');
 						}
 					},
 

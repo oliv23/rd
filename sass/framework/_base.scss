@@ -15,6 +15,8 @@ $lightBlue: #a5c3c9;
 
 $grey: #7d7d7d;
 $greyBlue: #91abbd;
+$lightGrey: #999999;
+$darkGrey: #666666;
 
 .bg-greyBlue {
   background-color: $greyBlue; color: $white;
@@ -114,7 +116,7 @@ a {
     color: #000;
 }
 
-a:hover,a:focus,a:active {
+a:hover,a:focus {
     text-decoration: none;
     color: $greyBlue;
 }
@@ -160,18 +162,22 @@ h1 {
 }
 
 h2 {
-    font-family: 'supramedium';
+    font-family: 'supranormal';
     font-size: 24px;
     font-size: 2.4rem;
-    line-height: 26px;
-    line-height: 2.6rem;
-    letter-spacing: 3px;
-    letter-spacing: .3rem;
+    line-height: 32px;
+    line-height: 3.2rem;    
     color: $greyBlue;
     padding: 0;
-    margin: 0 0 20px;
-    text-transform: uppercase;
+    margin: 0 0 20px;   
     @include font-smoothing();
+
+    &.bigger {
+      font-family: 'supramedium';
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      letter-spacing: .3rem;
+    }
 }
 
 h3 {
@@ -184,7 +190,23 @@ h3 {
     margin: 20px 0;
     color: $greyBlue;
     text-transform: uppercase;
+    letter-spacing: 1.5px;
+    letter-spacing: 0.15rem;
     @include font-smoothing();
+
+    .pane & {
+      &:first-child:not(.bigger) {
+        margin-top: 0;
+      }
+    }
+
+    &.bigger {
+      font-size: 24px;
+      font-size: 2.4rem;
+      line-height: 26px;
+      line-height: 2.6rem;
+      margin: 130px 0 45px;
+    }
 }
 
 h4 {
@@ -193,6 +215,7 @@ h4 {
   font-size: 2.4rem;
   line-height: 29px;
   line-height: 2.9rem;
+  margin: 20px 0;
   padding: 0;
   color: $greyBlue;
   @include font-smoothing();
@@ -209,6 +232,32 @@ h5 {
   @include font-smoothing();
 }
 
+blockquote {
+  padding: 25px 0;
+  p {
+    font-family: 'suprabold';
+    font-size: 24px;
+    font-size: 2.4rem;
+    line-height: 29px;
+    line-height: 2.9rem;
+    color: $white;
+  }
+
+  span {
+    font-family: 'supralight';
+    font-size: 14px;
+    font-size: 1.4rem;
+    line-height: 17px;
+    line-height: 1.7rem;
+    margin: 15px 0 0 0;
+    display: block;
+  }
+
+  strong {
+    font-family: 'suprademibold';
+  }
+}
+
 p {
   font-family: 'supralight';
   font-size: 16px;
@@ -217,23 +266,40 @@ p {
   line-height: 2.2rem;
   letter-spacing: 0.2px;
   letter-spacing: 0.02rem;
-  color: $grey;
+  color: $darkGrey;
   padding: 0;
-  margin: 0;
+  margin: 0 0 25px 0;
   @include font-smoothing();
+
+  + .list {
+    margin-top: 20px;
+  }
 }
 
 ul {
-    list-style-type: none
+  list-style-type: none;
+
+  p { margin-bottom: 5px; }
 }
 
-ul li,ol li {
-    font-size: 14px;
-    font-size: 1.4rem;
-    margin: 0;
-    padding: 0;
-    padding: 0;
-    list-style-type: none;
+ul.list {
+  margin-bottom: 25px;
+  li {
+    &:before {
+      content: '\F08C';
+      font-family: 'BlackTieRegular';
+      font-size: 12px;
+      font-size: 1.2rem;
+      line-height: 20px;
+      line-height: 2rem;
+      float: left;
+      color: $greyBlue;
+    }
+
+    p {
+      margin-left: 17px;
+    }
+  }
 }
 
 .bttn {
@@ -254,7 +320,7 @@ ul li,ol li {
   text-transform: uppercase;
   transition: all 0.2s ease;
 
-  &:hover, &:focus, &:active {
+  &:hover, &:focus {
     background: $greyBlue;
     color: $white;
   }
@@ -268,10 +334,12 @@ ul li,ol li {
     border: none;
     background: transparent;
 
-    &:hover, &:focus, &:active {
+    &:hover, &:focus {
       background: transparent;
     }
   }
+
+  &.full-width {width: 100%;}
 }
 
 .skip {
@@ -498,7 +566,7 @@ a.skip:active,a.skip:focus {
 .carousel {
   position: relative;
   overflow: hidden;
-  height: 768px;
+  min-height: 600px;
 
   &:before {
     content: '';
@@ -515,29 +583,37 @@ a.skip:active,a.skip:focus {
       display: none;
     }
   }
+
+  .slide {    
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 600px;
+  }
 }
 
 .hero {
   min-height: 768px;
 
-  .slide {
-    min-height: 768px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+  .carousel {
+    min-height: 768px;  
+
+    .slide {
+      min-height: 768px;
+    }
   }
 
   .bttn {
     color: $white;
     border-color: $white;
 
-    &:hover, &:active, &:focus {
+    &:hover, &:focus {
       background: $white;
       color: $greyBlue;
     }
 
     &.arrow {
-      &:hover, &:active, &:focus {
+      &:hover, &:focus {
         background: transparent;
         color: $greyBlue;
       }
@@ -582,50 +658,51 @@ a.skip:active,a.skip:focus {
   }
 }
 
-aside {    
-  h4 {
-    border-top: 4px solid $greyBlue;
+aside {
+  padding-right: 83px;
+
+  h4 {    
     font-size: 18px;
     font-size: 1.8rem;
     line-height: 22px;
     line-height: 2.2rem;
     padding: 5px 0 0;
+    margin-top: 0;
     margin-bottom: 15px;
+
+    &.no-border {
+      border-color: transparent;
+    }
   }
 
   p {
     font-family: 'supranormal';
     font-size: 12px;
     font-size: 1.2rem;
-    line-height: 20px;
-    line-height: 2.0rem;
+    line-height: 16px;
+    line-height: 1.6rem;
+  }
+
+  img, h4 {
+    border-top: 4px solid $greyBlue;
+  }
+
+  .social-icon {
+    color: $lightGrey;
+
+    &:hover, &:focus {
+      color: $greyBlue;
+    }
   }
 
   .subject, ul {
     margin-bottom: 40px;
-  }
-
-  ul:not(.social) {
-    li {
-      &:before {
-        content: '\F08C';
-        font-family: 'BlackTieRegular';
-        font-size: 12px;
-        font-size: 1.2rem;
-        line-height: 20px;
-        line-height: 2rem;
-        float: left;
-      }
-
-      p {
-        margin-left: 17px;
-      }
-    }
-  }
+  }  
 }
 
 .grid {
   margin: auto;
+  
   .item {
     width: 50%;
     height: 384px;
@@ -650,24 +727,41 @@ aside {
     background-repeat: no-repeat;
     background-position: center;
 
-    &:hover, &:focus, &:active {
+    &:hover, &:focus, &.active {
       + .wrap {
         background: rgba($black, .5);
         opacity: 1;
         transition: background .7s ease;
 
         .inner {
+        opacity: 1;
+        transform: translate3d(0,0,0) scale(1);
+        transition: all 0.3s ease-out;
+        }
+      }
+    }
+
+    &.active {
+      &:hover, &:focus {
+        + .wrap {
+          background: rgba($black, 0);
           opacity: 1;
-          transform: translate3d(0,0,0) scale(1);
+          transition: background .7s ease;
+
+          .inner {
+          opacity: 1;
+          transform: translate3d(0,0,0) scale(0);
           transition: all 0.3s ease-out;
           }
         }
       }
-    }   
+    }
+  }   
 
   .wrap {
     display: table;
     height: 100%;
+    width: 100%;
     opacity: 0;
     pointer-events: none;
     position: relative;
@@ -703,12 +797,28 @@ aside {
     line-height: 34px;
     line-height: 3.4rem;
     margin-bottom: 10px;
-
+    letter-spacing: 0;
   }
+
   .item-t {
     line-height: 18px;
     line-height: 1.8rem;
   }
+
+  &.similar {
+    .item {
+      width: 33.33%;
+      height: 256px;
+    }
+
+    h3 {
+      font-size: 36px;
+      font-size: 3.6rem;
+      line-height: 30px;
+      line-height: 3rem;
+    }
+  }
+
 }
 
 .service-wrap {
@@ -717,7 +827,7 @@ aside {
 
 .service {
   display: inline-block;
-  margin: 0 35px;
+  margin: 0 35px 40px;
   text-align: center;
   vertical-align: top;
   max-width: 170px;
@@ -801,6 +911,7 @@ aside {
     font-size: 75px;
     font-size: 7.5rem;
     color: $greyBlue;
+    margin: 0;
     transition: all .4s ease;
   }
 
@@ -859,6 +970,7 @@ aside {
     line-height: 24px;
     line-height: 2.4rem;
     color: $white;
+    margin: 0;
     transition: all .4s ease;
   }
 
@@ -906,41 +1018,41 @@ aside {
   opacity: 1;
   transition: opacity .4s;
 
-  &:hover, &:active, &:focus {
+  &:hover, &:focus {
     opacity: 0.5;
   }
 
   &.time {
     @include icons-sprite("client_time");
-    &:hover, &:active, &:focus {
+    &:hover, &:focus {
       @include icons-sprite("client_time_hover");
     }
   }
 
   &.waitrose {
     @include icons-sprite("client_waitrose");
-    &:hover, &:active, &:focus {
+    &:hover, &:focus {
       @include icons-sprite("client_waitrose_hover");
     }
   }
 
   &.boden {
     @include icons-sprite("client_boden");
-    &:hover, &:active, &:focus {
+    &:hover, &:focus {
       @include icons-sprite("client_boden_hover");
     }
   }
 
   &.argos {
     @include icons-sprite("client_argos");
-    &:hover, &:active, &:focus {
+    &:hover, &:focus {
       @include icons-sprite("client_argos_hover");
     }
   }
 
   &.bauer {
     @include icons-sprite("client_bauer");
-    &:hover, &:active, &:focus {
+    &:hover, &:focus {
       @include icons-sprite("client_bauer_hover");
     }
   }  
@@ -1008,24 +1120,80 @@ aside {
     font-size: 2.8rem;
     line-height: 34px;
     line-height: 3.4rem;
+    cursor: pointer;
+    @include font-smoothing();
     transition: color .4s ease;
 
-    &:hover, &:active, &:focus {
+    &:hover, &:focus {
       color: $white;
       text-decoration: none;
     }
   }
 
-  .social_linkedin:before {
-    content: '\f08c';
+  .social_linkedin {
+    position: relative;
+
+    .IN-widget {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      top: 7px;
+      opacity: 0;
+    }
+
+    &:before {
+      content: '\f08c';
+    }
   }
 
-  .social_twitter:before {
-    content: '\f099';
+  .social_twitter {
+    position: relative;
+    
+    iframe {
+      position: absolute!important;
+      width: 100%!important;
+      left: 0;
+      top: 12px;
+      filter: alpha(opacity=0);
+      opacity: 0;
+      visibility: hidden;
+    }
+    &:before {
+      content: '\f099';
+    }
   }
 
   .social_pinterest:before {
     content: '\f0d2';
+  }
+
+  .social_facebook {
+    position: relative;
+
+    &.fb_iframe_widget span {
+      position: absolute;
+      left: 0;
+      top: 7px;
+      bottom: 0;
+      width: 100%!important;
+      overflow: hidden;      
+      filter: alpha(opacity=0);
+      opacity: 0;
+
+      iframe {
+        height: 100%!important;
+        width: 100%!important;
+      }
+    }
+
+    &:before {
+      content: '\f230';
+    }
+  }
+
+  .social_gplus:before {
+    content: '\f0d4';
   }
 
   .call, .tweet, .email, .find {
@@ -1106,7 +1274,7 @@ footer {
   a {
     color: $greyBlue;
 
-    &:hover, &:focus, &:active {
+    &:hover, &:focus {
       color: $white;
     }
   }
@@ -1172,7 +1340,7 @@ footer {
         .nav-btn {
           color: $white;
 
-          &:hover, &:focus, &:active {
+          &:hover, &:focus {
             color: $lightOrange;
           } 
         }
@@ -1183,7 +1351,7 @@ footer {
 
           a { 
             color: $white; 
-            &:hover, &:focus, &:active {
+            &:hover, &:focus {
               color: $lightOrange;
             }
           }
@@ -1222,11 +1390,15 @@ footer {
         color: $white;
         display: block;
 
-        &:hover, &:focus, &:active {
+        &:hover, &:focus {
           color: $lightOrange;
         }
       }
     }
+  }
+
+  aside {
+    padding-right: 41px;
   }
 
   .carousel {
@@ -1261,7 +1433,9 @@ footer {
     display: none!important;
   }
 
-  
+  aside {
+    padding: 0;
+  }
 
   .wrapper-intro {
     h1 {
@@ -1292,24 +1466,24 @@ footer {
 @media all and (max-width: 480px) {
 
   h1 {
-    font-size: 46px;
-    font-size: 4.6rem;
-    line-height: 44px;
-    line-height: 4.4rem;
+    // font-size: 46px;
+    // font-size: 4.6rem;
+    // line-height: 44px;
+    // line-height: 4.4rem;
   }
 
   h3 {
-    font-size: 24px;
-    font-size: 2.4rem;
-    line-height: 28px;
-    line-height: 2.8rem;
+    // font-size: 24px;
+    // font-size: 2.4rem;
+    // line-height: 28px;
+    // line-height: 2.8rem;
   }
 
   p {
-    font-size: 13px;
-    font-size: 1.3rem;
-    line-height: 14px;
-    line-height: 1.4rem;
+    // font-size: 13px;
+    // font-size: 1.3rem;
+    // line-height: 14px;
+    // line-height: 1.4rem;
   }
 
   .sub-intro {
@@ -1327,44 +1501,17 @@ footer {
   }
 
   .bttn {
-    font-size: 12px;
-    font-size: 1.2rem;
-    line-height: 12px;
-    line-height: 1.2rem;
+    // font-size: 12px;
+    // font-size: 1.2rem;
+    // line-height: 12px;
+    // line-height: 1.2rem;
   }
 
-  .news-item {
-    width: 100%;
-    margin-left: 0!important;
-    
-    img {
-      float: left;
-      width: 40%;
-      margin-right: 10px;
-      max-height: none;
-    }
-    iframe {
-      float: left;
-      width: 40%;
-      margin-right: 10px;
-    }
-    .news-desc {display: none;}
-  }
-
-  .contact-box {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-
-  .wrapper-contact {
-    textarea {
-      height: 145px;
-    }
-  }
-
-  .read-more {
+  .client {
     display: block;
+    margin: 0 auto;
   }
+
 
   #map {
     display: none;
@@ -1377,14 +1524,5 @@ footer {
 }
 
 @media all and (max-width: 320px) {
-  .news-item {
-    img {
-      float: none;
-      width: 100%;
-      margin: 0;
-    }
-    .news-date {
-      margin-top: 5px;
-    }
-  }
+
 }

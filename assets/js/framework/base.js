@@ -341,3 +341,16 @@ $(function (){
     var attachFastClick = Origami.fastclick;
         attachFastClick(document.body);
 });
+
+$(function (){    
+    //remove touch delay on touch devices
+    var $gplus = $('.social_gplus');
+
+    $gplus.each(function (i,d) {
+      var $link = $(this),
+      href = $link.attr('href');
+
+      href = href.replace('{URL}', window.location.href)
+      $link.attr('href', href);
+    });
+});
