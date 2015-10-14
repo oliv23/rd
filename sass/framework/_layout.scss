@@ -498,12 +498,6 @@
         padding-right: 3.2%;
       }
 
-      &.grid {
-        .item {
-          width: 100%;
-        }
-      }
-
       .pane, .pane .pane {
         margin-left: 0;
         &.dw-mgZero {
@@ -784,12 +778,7 @@
       padding-left: 3.2%;
       padding-right: 3.2%;
     }
-
-    &.grid {
-      .pane {
-        &:nth-child(2n + 1) { margin-left: 0; }
-      }
-    }
+    
     .pane {
       //margin-left: 4%;
       &.dw-mgZero {

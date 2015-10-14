@@ -16,6 +16,8 @@
 					// vid = $f(iframe),
 					// vidPlaying = false,
 					$carousel = $('.carousel'),
+					mapABoxText = '<strong>Rhapsody Ltd</strong><br><br>109-123 Clifton Street,<br>London,<br>EC2A 4LD',
+					// mapBBoxText = '<strong>Rhapsody Ltd</strong><br><br>Reading Clifton Street,<br>London,<br>EC2A 4LD',
 					//readMore = $('.read-more'),
 					// $newsTemplate = $('.hbs-news-posts'),
 
@@ -44,25 +46,56 @@
 						header.toggleClass('menu-open');
 						//header.hasClass('fixed') ? {} : header.addClass('fixed');
 						e.preventDefault();
-					};
+					},
 
-					// handleNavLink = function (e) {
-					// 	header.removeClass('menu-open');
-					// 	e.preventDefault();
-					// },
+					initMap = function (lat,lng,el,infoText) {
+					// Basic options for a simple Google Map
+					// For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+					// API key (referenced in the script includes in footer) is generated from rhapsody.dps@gmail.com
+						var mapOptions = {
+							// How zoomed in you want the map to start at (always required)
+							zoom: 17,
+							panControl: false,
+							mapTypeControl: false,
+							zoomControl: false,
+							scrollwheel: false,
 
-					// getNewsPosts();
-					// initMap();
-					$window.on('scroll', handleScrollFn);
-					navBtn.on('click', handleNav);
-					// navlink.on('click', handleNavLink);
-					// $('.vid-btn').on('click', playVid);
-					// expBtn.on('click', handleCarousel);
-					$(header).scrollupbar();
-					// $(readMore).on('click', handleCap);
+						// The latitude and longitude to center the map (always required)
+						center: new google.maps.LatLng(lat, lng), // coords
 
-					handleScrollFn();
-					var wow = new WOW({
+						// How you would like to style the map. 
+						// This is where you would paste any style found on Snazzy Maps.
+						styles: [{'featureType':'landscape','stylers':[{'saturation':-100},{'lightness':65},{'visibility':'on'}]},{'featureType':'poi','stylers':[{'saturation':-100},{'lightness':51},{'visibility':'simplified'}]},{'featureType':'road.highway','stylers':[{'saturation':-100},{'visibility':'simplified'}]},{'featureType':'road.arterial','stylers':[{'saturation':-100},{'lightness':30},{'visibility':'on'}]},{'featureType':'road.local','stylers':[{'saturation':-100},{'lightness':40},{'visibility':'on'}]},{'featureType':'transit','stylers':[{'saturation':-100},{'visibility':'simplified'}]},{'featureType':'administrative.province','stylers':[{'visibility':'off'}]},{'featureType':'water','elementType':'labels','stylers':[{'visibility':'on'},{'lightness':-25},{'saturation':-100}]},{'featureType':'water','elementType':'geometry','stylers':[{'hue':'#ffff00'},{'lightness':-25},{'saturation':-97}]}]
+						};
+
+						// Get the HTML DOM element that will contain your map 
+						// We are using a div with id='map' seen below in the <body>
+						var mapElement = document.getElementById(el);
+
+						// Create the Google Map using our element and options defined above
+						var map = new google.maps.Map(mapElement, mapOptions);
+
+						// Let's also add a marker while we're at it
+						var marker = new google.maps.Marker({
+								position: new google.maps.LatLng(lat, lng),
+								map: map,
+								icon: 'assets/img/structure/' + el + '-map-marker.png',
+								title: 'Rhapsody Digital'
+						});
+
+						var infowindow = new google.maps.InfoWindow(),
+								boxText = document.createElement('div');
+								boxText.innerHTML = infoText;
+
+						google.maps.event.addListener(marker, 'click', function() {
+							infowindow.setContent(boxText);
+							infowindow.open(map, marker);
+						});
+
+
+					},
+
+					wow = new WOW({
 					    boxClass:     'wow',      // animated element css class (default is wow)
 					    animateClass: 'animated', // animation css class (default is animated)
 					    offset:       0,          // distance to the element when triggering the animation (default is 0)
@@ -73,7 +106,45 @@
 					    //   // the argument that is passed in is the DOM node being animated
 					    // }
 					  }
-					);
+					),
+
+					handleInfoBox = function (e) {
+						e.preventDefault();
+
+						if ($window.innerWidth() < 481) {
+							return;
+						}
+
+						var $this = $(this),
+								$parent = $this.parent();
+
+						if ($parent.hasClass('show')) {
+							$parent.removeClass('show')
+								.next('.wrapper-info').slideUp('medium');
+							$this.blur();
+						} else if ($('.item').hasClass('show')) {
+							$('.item.show').removeClass('show')
+								.next('.wrapper-info').slideUp('medium');
+							$parent.addClass('show')
+								.next('.wrapper-info').slideDown('medium');
+						} else {
+							$parent.addClass('show')
+								.next('.wrapper-info').slideDown('medium');
+						}
+						
+					};
+
+					// handleNavLink = function (e) {
+					// 	header.removeClass('menu-open');
+					// 	e.preventDefault();
+					// },
+					
+					initMap(51.5236779, -0.0833322, 'mapA', mapABoxText);
+					$window.on('scroll', handleScrollFn);
+					navBtn.on('click', handleNav);
+					// navlink.on('click', handleNavLink);
+					$(header).scrollupbar();
+					handleScrollFn();
 					wow.init();
 
 			if ($window.innerWidth() < 1025) {
@@ -98,7 +169,7 @@
 		    cssEase: 'linear'
 		  });
 
-		  var $container = $('.grid');
+		  var $container = $('.packery');
 
 			// init			
 			$container.packery({
@@ -139,6 +210,7 @@
 				panelAnim(panels);
 			}
 			
+			$('.management .img').on('click', handleInfoBox);
 
 			$window.on('resize', function () {
 				if ($(this).innerWidth() < 1025) {

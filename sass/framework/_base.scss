@@ -205,7 +205,7 @@ h3 {
       font-size: 2.4rem;
       line-height: 26px;
       line-height: 2.6rem;
-      margin: 130px 0 45px;
+      margin: 30px 0 45px;
     }
 }
 
@@ -240,6 +240,7 @@ blockquote {
     font-size: 2.4rem;
     line-height: 29px;
     line-height: 2.9rem;
+    margin: 0;
     color: $white;
   }
 
@@ -282,23 +283,46 @@ ul {
   p { margin-bottom: 5px; }
 }
 
-ul.list {
-  margin-bottom: 25px;
-  li {
-    &:before {
-      content: '\F08C';
-      font-family: 'BlackTieRegular';
-      font-size: 12px;
-      font-size: 1.2rem;
-      line-height: 20px;
-      line-height: 2rem;
-      float: left;
-      color: $greyBlue;
-    }
+ul {
+  &.tags {
+    li { 
+      display: inline-block;
+      margin-right: 3px;
 
-    p {
-      margin-left: 17px;
+      p:after {
+        content: ', ';
+        font-size: 12px;
+        font-size: 1.2rem;
+        line-height: 16px;
+        line-height: 1.6rem;
+      }
+      &:last-child {
+        p:after { content: ''; }
+      }
     }
+  }
+  &.list {
+    margin-bottom: 25px;
+    li {
+      &:before {
+        content: '\F08C';
+        font-family: 'BlackTieRegular';
+        font-size: 12px;
+        font-size: 1.2rem;
+        line-height: 20px;
+        line-height: 2rem;
+        float: left;
+        color: $greyBlue;
+      }
+
+      p {
+        margin-left: 17px;
+      }
+    }
+  }
+
+  &.status {
+    font-size: 16px;
   }
 }
 
@@ -626,6 +650,8 @@ a.skip:active,a.skip:focus {
   bottom:80px;
   left: 0;
   right: 0;
+  max-width: 80%;
+  margin: 0 auto;
   text-align: center;
   z-index: 2;
 
@@ -635,10 +661,17 @@ a.skip:active,a.skip:focus {
     margin: 0 auto;
     text-align: center;    
   }
+  em {
+    display: inline;
+  }
 
   h1 {
     width: 100%;
     color: $white;
+  }  
+
+  .type {
+    margin-bottom: 20px;
   }
 
   .intro {
@@ -700,6 +733,25 @@ aside {
   }  
 }
 
+.types {
+  width: 100%;
+  text-align: center;
+}
+
+.type {
+  display: inline-block;
+  padding: 5px 10px;
+  background: $black;
+  text-transform: uppercase;
+  color: $white;
+  font-family: 'suprademibold';
+  font-size: 12px;
+  font-size: 1.2rem;
+  line-height: 14px;
+  line-height: 1.4rem;
+  @include font-smoothing();
+}
+
 .grid {
   margin: auto;
   
@@ -709,11 +761,98 @@ aside {
     background-color: $black;
     display: inline-block;
     position: relative;
+
+    &.show {
+      .img + .wrap {
+        background: rgba($black, 0);
+        opacity: 1;
+        transition: background .7s ease;
+
+        .inner {
+        opacity: 1;
+        transform: translate3d(0,0,0) scale(0);
+        transition: all 0.3s ease-out;
+        }
+      }
+    }
   }
 
   @for $i from 1 through 6 {
     .item#{$i} .img {
       background-image: url(/assets/img/components/item#{$i}.jpg)
+    }
+  }
+
+  .wrapper-info {
+    float: left;
+    width: 100%;
+    padding: 20px;
+    background: $greyBlue;
+    position: relative;
+    display: none;
+
+    .pane {
+      &.left {width: 24%;}
+      &.right {width: 70%; margin-left: 4%;}
+    }
+
+    p, a  {color: $white; margin: 0;}
+
+    .name {      
+      font-family: 'suprablack';
+      font-size: 32px;
+      font-size: 3.2rem;
+      line-height: 26px;
+      line-height: 2.6rem;
+      margin: 0 0 5px 0;
+      text-transform: uppercase;
+    }
+    .job {
+      font-family: 'supranormal';
+      font-size: 14px;
+      font-size: 1.4rem;
+      line-height: 16px;
+      line-height: 1.6rem;
+      text-transform: uppercase;
+    }
+    .desc {
+      font-family: 'supralight';
+      font-size: 16px;
+      font-size: 1.6rem;
+      line-height: 24px;
+      line-height: 2.4rem;
+      margin-top: -5px; //to v align with heading opposite
+      margin-bottom: 15px;
+    }
+
+    .twitter, .linkedin {
+      font-family: 'supranormal';
+      font-size: 16px;
+      font-size: 1.6rem;
+      line-height: 24px;
+      line-height: 2.4rem;
+      margin-right: 15px;
+      @include font-smoothing();
+
+      &:hover, &:focus {
+        color: $black;
+      }
+
+      &:before {
+        font-family: 'FontAwesome';
+        font-size: 20px;
+        font-size: 2rem;
+        line-height: 22px;
+        line-height: 2.2rem;
+        padding-right: 5px;
+      }
+    }
+
+    .twitter:before {
+      content: '\f099';
+    }
+    .linkedin:before {
+      content: '\f08c';
     }
   }
 
@@ -783,12 +922,14 @@ aside {
   }
 
   h3,
-  .item-t  {
+  .item-t ,
+  .item-date  {
     display: inline-block;
     color: $white;
     text-align: center;
-    max-width: 80%;    
-  }
+    max-width: 80%;
+    width: 100%;
+  }  
 
   h3 {
     font-family: 'suprablack';
@@ -805,7 +946,23 @@ aside {
     line-height: 1.8rem;
   }
 
-  &.similar {
+  .item-date {
+    font-family: 'supranormal';
+    font-size: 12px;
+    font-size: 1.2rem;
+    line-height: 12px;
+    line-height: 1.2rem;
+    margin: 0;
+    @include font-smoothing();
+  }
+
+  .types {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+
+  &.similar, &.management {
     .item {
       width: 33.33%;
       height: 256px;
@@ -819,6 +976,46 @@ aside {
     }
   }
 
+  &.management {
+    .item {
+      width: 25%;
+      height: 256px;
+      overflow: hidden;
+
+      &:after {
+        content: '';
+        width: 0;
+        height: 0;
+        margin: 0 auto;
+        border-style: solid;
+        border-width: 0 16.5px 17px 16.5px;
+        border-color: transparent transparent $greyBlue transparent;
+        position: absolute;
+        bottom: -20px;        
+        left: 0;
+        right: 0;
+        transition: bottom 0.5s ease;
+      }
+
+      &.show:after { bottom: 0; }
+    }
+
+    @for $i from 1 through 4 {
+      .item#{$i} .img {
+        background-image: url(/assets/img/components/team#{$i}.jpg)
+      }
+    }
+  }
+}
+
+.article .grid.similar {
+  h3 {
+    font-size: 28px;
+    font-size: 2.8rem;
+    line-height: 22px;
+    line-height: 2.2rem;
+    margin: 0;
+  }
 }
 
 .service-wrap {
@@ -1111,24 +1308,38 @@ aside {
   display: inline-block;
 }
 .social-icon {
-    display: block;
-    padding: 5px 6px 1px;
-    margin-left: 3px;
+  display: block;
+  padding: 5px 6px 1px;
+  margin-left: 3px;
+  color: $grey;
+  font-family: 'FontAwesome';
+  font-size: 40px;
+  font-size: 4rem;
+  line-height: 48px;
+  line-height: 4.8rem;
+  cursor: pointer;
+  @include font-smoothing();
+  transition: color .4s ease;
+
+  &:hover, &:focus {
     color: $greyBlue;
-    font-family: 'FontAwesome';
+    text-decoration: none;
+  }
+}
+
+footer, aside {
+  .social-icon {
+    color: $greyBlue;
     font-size: 28px;
     font-size: 2.8rem;
     line-height: 34px;
     line-height: 3.4rem;
-    cursor: pointer;
-    @include font-smoothing();
-    transition: color .4s ease;
 
     &:hover, &:focus {
       color: $white;
-      text-decoration: none;
     }
   }
+}
 
   .social_linkedin {
     position: relative;
@@ -1197,6 +1408,13 @@ aside {
   }
 
   .call, .tweet, .email, .find {
+    margin: 0;
+    a {
+      color: inherit;
+      &:hover, &:focus {
+        color: $greyBlue;
+      }
+    }
     &:before {
       font-family: 'BlackTieSolid';
       font-size: 12px;
@@ -1234,12 +1452,13 @@ footer {
   box-sizing: border-box;
   text-align: center;
 
-  h3 {
+  h4 {
     font-family: 'suprademibold';
     font-size: 28px;
     font-size: 2.8rem;
     line-height: 33px;
     line-height: 3.3rem;
+    margin: 0;
     color: $greyBlue;
   }
 
@@ -1252,6 +1471,7 @@ footer {
     font-size: 1.1rem;
     line-height: 18px;
     line-height: 1.8rem;
+    margin: 0;
     -webkit-font-smoothing: subpixel-antialiased;
     -moz-osx-font-smoothing: auto;
   }
@@ -1305,7 +1525,7 @@ footer {
 }
 
 @media all and (max-width: 1024px) {
-  .hero, .hero .slide {
+  .hero, .hero .carousel .slide {
     min-height: 0;
   }
 }
@@ -1429,6 +1649,18 @@ footer {
 
 @media all and (max-width: 767px) {
 
+  .grid {
+    .item {
+      width: 100%;
+    }
+
+    &.management {
+     .item {
+      width: 50%;
+     }
+   }
+  }
+
   .tablet, .carTxt {
     display: none!important;
   }
@@ -1505,6 +1737,42 @@ footer {
     // font-size: 1.2rem;
     // line-height: 12px;
     // line-height: 1.2rem;
+  }
+
+  .grid {
+    &.management {
+      .item {
+        width: 100%;
+
+        &:after { bottom: 0; }
+      }
+
+      .img {
+        + .wrap {
+          background: rgba($black, 0);
+          opacity: 1;
+          transition: background .7s ease;
+
+          .inner {
+          opacity: 1;
+          transform: translate3d(0,0,0) scale(0);
+          transition: all 0.3s ease-out;
+          }
+        }
+      }
+    }
+    
+    .wrapper-info {
+      display: block!important;
+      
+      .pane {
+        &.left, &.right { 
+          width: 100%; 
+          margin-left: 0;
+        }
+        &.left { margin-bottom: 15px; }
+      }
+    }
   }
 
   .client {
