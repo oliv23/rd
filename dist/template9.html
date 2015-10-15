@@ -32,15 +32,7 @@
 		
 </head>
 
-<body class="article">
-	<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+<body>
 <div><a href="#skipnav" class="skip">Skip to main content</a></div>
 
 	<div id="wrapper" class="wrapper">
@@ -70,9 +62,18 @@
 		</div>
 
 			<div class="row relative hero no-padding">
-	    	<div class="pane base6">
-	    		<div id="mapA"></div>
-		    </div>
+				<div class="carousel">
+		    	<div class="slide">
+		    		<div id="mapA" class="map"></div>
+	    			<div id="mapB" class="map"></div>
+		    		<div class="wrapper-intro">
+			    		<h1>What makes a good digital magazine? When are good magazines digital?</h1>
+			    		<p class="intro"><em>by</em> Russell Wilding on 2nd January 2015</p>
+			    		<a href="#skipnav" class="bttn arrow"></a>
+			    	</div>
+		    	</div>
+		    </div>	    	
+	    	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMp2oqwLyzt4E1JAZnDQ-_Kfgw1WcUKAY"></script>
 	    </div>
 
 			<div class="main off-area">
@@ -104,16 +105,14 @@
 			    <div class="row center">
 			    	<div class="pane base12">
 			    		<ul class="social">
-			    			<li class="social-icon social_twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="none"></a>
-									<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-								</li>			    			
-			    			<li class="social-icon social_linkedin"><script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script><script type="IN/Share"></script></li>
+			    			<li><a href="https://twitter.com/rhapsodydigital" class="social-icon social_twitter" target="_blank"></a></li>			    			
+			    			<li><a href="https://www.linkedin.com/company/rhapsody-limited" class="social-icon social_linkedin" target="_blank"></a></li>
 			    			<li><a href="https://uk.pinterest.com" target="_blank" class="social-icon social_pinterest"></a></li>
 			    		</ul>
 			    	</div>
 			    </div>
 
-			    <div class="row pad-top m-top bg-greyBlue center">
+			    <div class="row m-top bg-greyBlue center">
 			    	<div class="pane base12">
 			    		<h4 class="left wow fadeIn">Some of our clients</h4>
 			    	</div>
@@ -154,7 +153,6 @@
 			</div><!-- .main -->			
 	</div><!-- .wrapper -->
 
-	<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6_Oz-LDjfUkd1nNja8z_xxnby405maIQ"></script> -->
 	<script type="text/javascript" src="assets/js/lib.min.js"></script>
 	<script type="text/javascript" src="assets/js/framework.js"></script>
 	<script type="text/javascript" src="assets/js/components.js"></script>

@@ -16,8 +16,8 @@
 					// vid = $f(iframe),
 					// vidPlaying = false,
 					$carousel = $('.carousel'),
-					mapABoxText = '<strong>Rhapsody Ltd</strong><br><br>109-123 Clifton Street,<br>London,<br>EC2A 4LD',
-					// mapBBoxText = '<strong>Rhapsody Ltd</strong><br><br>Reading Clifton Street,<br>London,<br>EC2A 4LD',
+					mapABoxText = '<h6>LONDON</h6><p>109-123 Clifton Street,<br>London,<br>EC2A 4LD</p><p class="call">Call us <a href="tel:+442077291000">+44 (0)20 7729 1000</a></p><p class="email">Email us <a href="mailto:hello@rhapsodydigital.co.uk">hello@rhapsodydigital.co.uk</a></p>',
+					mapBBoxText = '<h6>READING</h6><p>Wyvols Court,<br>Swallowfield,<br>Reading,<br>RG7 1WY</p><p class="call">Call us <a href="tel:+448458723494">+44 (0)845 872 3494</a></p><p class="email">Email us <a href="mailto:michael.faris@rhapsodymedia.co.uk">michael.faris@rhapsodymedia.co.uk</a></p>',
 					//readMore = $('.read-more'),
 					// $newsTemplate = $('.hbs-news-posts'),
 
@@ -48,13 +48,13 @@
 						e.preventDefault();
 					},
 
-					initMap = function (lat,lng,el,infoText) {
+					initMap = function (lat,lng,el,zoomLevel,infoText) {
 					// Basic options for a simple Google Map
 					// For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
 					// API key (referenced in the script includes in footer) is generated from rhapsody.dps@gmail.com
 						var mapOptions = {
 							// How zoomed in you want the map to start at (always required)
-							zoom: 17,
+							zoom: zoomLevel,
 							panControl: false,
 							mapTypeControl: false,
 							zoomControl: false,
@@ -138,8 +138,11 @@
 					// 	header.removeClass('menu-open');
 					// 	e.preventDefault();
 					// },
-					
-					initMap(51.5236779, -0.0833322, 'mapA', mapABoxText);
+					if ($('.map').length) {
+						initMap(51.5236779, -0.0833322, 'mapA', 17, mapABoxText); //rhapsody london
+						initMap(51.379355, -0.961820, 'mapB', 15, mapBBoxText); //rhapsody reading
+					}
+
 					$window.on('scroll', handleScrollFn);
 					navBtn.on('click', handleNav);
 					// navlink.on('click', handleNavLink);

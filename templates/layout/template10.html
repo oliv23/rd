@@ -8,7 +8,15 @@
 	<!--(bake /templates/structure/html-header.html)-->
 </head>
 
-<body>
+<body class="article">
+	<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <div><a href="#skipnav" class="skip">Skip to main content</a></div>
 
 	<div id="wrapper" class="wrapper">
@@ -16,57 +24,27 @@
 		<!--(bake /templates/structure/header.html)-->
 
 			<div class="row relative hero no-padding">
-				<div class="carousel">
+	    	<div class="carousel">
 		    	<div class="slide">
-		    		<div id="mapA" class="map"></div>
-	    			<div id="mapB" class="map"></div>
+		    		<div class="img" style="background-image: url(./assets/img/components/hero_home9.jpg);"></div>
 		    		<div class="wrapper-intro">
-			    		<h1>What makes a good digital magazine? When are good magazines digital?</h1>
-			    		<p class="intro"><em>by</em> Russell Wilding on 2nd January 2015</p>
+		    			<span class="type">Event</span>
+			    		<h1>Leading digital innovators to join Rhapsody in PPA Festival panel</h1>
+			    		<p class="intro">2nd January 2015</p>
 			    		<a href="#skipnav" class="bttn arrow"></a>
 			    	</div>
 		    	</div>
-		    </div>	    	
-	    	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMp2oqwLyzt4E1JAZnDQ-_Kfgw1WcUKAY"></script>
+		    </div>
 	    </div>
 
 			<div class="main off-area">
-		   <a id="skipnav" tabindex="-1"></a>			    
-			    <div class="row m-top constrain">
-		    		<div class="pane base6 ml12">
-		    			<h3>London Office</h3>
-		    			<p>109-123 Clifton Street<br>London<br>EC2A 4LD</p>
-		    			<p class="call">Call us <a href="tel:+442077291000">+44 (0)20 7729 1000</a></p>
-	    				<p class="email">Email us <a href="mailto:hello@rhapsodydigital.co.uk">hello@rhapsodydigital.co.uk</a></p>
-		    			</p>
-		    		</div>
+		   <a id="skipnav" tabindex="-1"></a>
 
-			    	<div class="pane base6 ml12">
-			    		<h3>Reading Office</h3>
-			    		<p>Wyvols Court<br>Swallowfield<br>Reading<br>RG7 1WY</p>
-		    			<p class="call">Call us <a href="tel:+44845 872 3494">+44 (0)845 872 3494</a></p>
-	    				<p class="email">Email us <a href="mailto:michael.faris@rhapsodymedia.co.uk">michael.faris@rhapsodymedia.co.uk</a></p>
-		    			</p>
-			    	</div>
-			    </div>
+		   		<div class="row center no-padding">
+		   			<h3>Social plugin here</h3>
+		   		</div>
 
-			    <div class="row center">
-			    	<div class="pane base12">
-			    		<h3 class="bigger">Follow us</h3>
-			    	</div>
-			    </div>
-
-			    <div class="row center">
-			    	<div class="pane base12">
-			    		<ul class="social">
-			    			<li><a href="https://twitter.com/rhapsodydigital" class="social-icon social_twitter" target="_blank"></a></li>			    			
-			    			<li><a href="https://www.linkedin.com/company/rhapsody-limited" class="social-icon social_linkedin" target="_blank"></a></li>
-			    			<li><a href="https://uk.pinterest.com" target="_blank" class="social-icon social_pinterest"></a></li>
-			    		</ul>
-			    	</div>
-			    </div>
-
-			    <div class="row m-top bg-greyBlue center">
+			    <div class="row bg-greyBlue center">
 			    	<div class="pane base12">
 			    		<h4 class="left wow fadeIn">Some of our clients</h4>
 			    	</div>
