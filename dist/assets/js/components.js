@@ -4,6 +4,7 @@
 
 			var header = $('header'),
 					navBtn = $('.nav-btn'),
+					body = $('body'),
 					//navlink = $('.nav-link'),
 					//expBtn = $('.bttn-exp'),
 					// expBtnText = $('.bttn-exp').text(),
@@ -22,15 +23,11 @@
 					// $newsTemplate = $('.hbs-news-posts'),
 
 					handleScrollFn = function () {
-						if ($window.scrollTop() > 250) {
-					    header.addClass('fixed').removeClass('menu-open');
+						if ($window.scrollTop() < 250) {
+					    body.removeClass('fixed');
 					  } else {
-					    header.removeClass('fixed menu-open');
+							$.scrollupbar.isInViewport ? body.addClass('fixed') : body.removeClass('fixed');
 					  }
-
-						// if ($window.scrollTop() > 580 && vidPlaying) {
-						// 	vid.api('pause');
-						// }
 					},
 
 					resizeHero = function (isMobile) {
@@ -42,8 +39,23 @@
 						}
 					},
 
+					touchFn = function (e) {
+						e.preventDefault();
+					},
+
+					disableTouch = function (menuOpen) {
+						var fixed = document.getElementById('body');
+						
+						if (menuOpen) {
+								fixed.addEventListener('touchmove', touchFn, false);
+							} else {
+								fixed.removeEventListener('touchmove', touchFn);
+							}
+					},
+
 					handleNav = function (e) {
-						header.toggleClass('menu-open');
+						body.toggleClass('menu-open');
+						disableTouch(body.hasClass('menu-open'));
 						//header.hasClass('fixed') ? {} : header.addClass('fixed');
 						e.preventDefault();
 					},
@@ -147,7 +159,7 @@
 					navBtn.on('click', handleNav);
 					// navlink.on('click', handleNavLink);
 					$(header).scrollupbar();
-					handleScrollFn();
+					//handleScrollFn();
 					wow.init();
 
 			if ($window.innerWidth() < 1025) {
@@ -218,7 +230,6 @@
 			$window.on('resize', function () {
 				if ($(this).innerWidth() < 1025) {
 					resizeHero(true);
-					// setCapHeight(true);
 				} else {
 					resizeHero(false);
 				}

@@ -109,6 +109,83 @@ body {
     &.overflow-visible {
       overflow-x: visible!important;
     }
+
+    &.fixed {
+      .wrapper >  header {
+      background-color: $white;
+      box-shadow: 0px 7px 12px -7px rgba(50,50,50,0.75);
+      height: 70px;
+
+      .nav-btn {
+        top: 18px;
+        transition: top 0s ease;
+
+        span { background: $greyBlue; }
+      }
+
+      .logo {
+        width: 132px;
+        height: 40px;
+        margin-top: 14px; 
+        @include icons-sprite("rd_logo_fixed");
+      }
+
+      .nav {
+        li { 
+          line-height: 70px;
+          transition: line-height 0s ease;
+        }
+      }
+    }
+
+    &.menu-open {
+      .wrapper > header {
+        .nav {
+          a { color: $greyBlue; }
+        }
+      }
+    }
+  }
+
+  &.menu-open {
+    .wrapper >  header {
+      .nav {
+        top: 0;
+
+        li {
+          opacity: 1;
+        }
+      }
+
+      //start Burger
+      .nav-btn span:nth-child(1) {
+        top: 18px;
+        width: 0%;
+        left: 50%;
+      }
+
+      .nav-btn span:nth-child(2) {
+        top: 15px;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+
+      .nav-btn span:nth-child(3) {
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+      }
+
+      .nav-btn span:nth-child(4) {
+        top: 18px;
+        width: 0%;
+        left: 50%;
+      }//end Burger      
+    }
+  }
 }
 
 a {
@@ -419,53 +496,7 @@ a.skip:active,a.skip:focus {
   width: 100%;
   position: fixed;
   z-index: 999;
-  transition: background 0.4s ease;
-
-  &.menu-open {
-    height: 110px;
-
-    .nav {
-      top: 0;
-
-      li {
-        opacity: 1;
-      }
-    }
-
-    //start Burger
-    .nav-btn span:nth-child(1) {
-      top: 18px;
-      width: 0%;
-      left: 50%;
-    }
-
-    .nav-btn span:nth-child(2) {
-      top: 15px;
-      -webkit-transform: rotate(45deg);
-      -moz-transform: rotate(45deg);
-      -o-transform: rotate(45deg);
-      transform: rotate(45deg);
-    }
-
-    .nav-btn span:nth-child(3) {
-      -webkit-transform: rotate(-45deg);
-      -moz-transform: rotate(-45deg);
-      -o-transform: rotate(-45deg);
-      transform: rotate(-45deg);
-    }
-
-    .nav-btn span:nth-child(4) {
-      top: 18px;
-      width: 0%;
-      left: 50%;
-    }
-    //end Burger
-
-    // .nav-btn:before {
-    //   content: '\F00C';
-    // }
-
-  }
+  transition: background 0.4s ease;  
 
   .logo {
     position: absolute;
@@ -474,7 +505,7 @@ a.skip:active,a.skip:focus {
     height: 54px;
     text-indent: -9999px;
     margin: 20px auto 0;
-    transition: all 0.4s ease;
+    // transition: all 0.4s ease;
     @include icons-sprite("rd_logo1");
   }
 
@@ -490,7 +521,7 @@ a.skip:active,a.skip:focus {
     display: inline-block;
     text-align: center;
     font-size: 0;
-    transition: all .4s ease;
+    transition: top .4s ease;
 
     &:hover {
       a {
@@ -504,7 +535,7 @@ a.skip:active,a.skip:focus {
       line-height: 110px;
       vertical-align: middle;
       opacity: 0;
-      transition: all .4s ease;
+      transition: opacity 0.4s ease, line-height 0.4s ease
     }
 
     a {
@@ -515,7 +546,7 @@ a.skip:active,a.skip:focus {
       display: block;
       color: $white;
       text-transform: uppercase;
-      transition: all .4s ease;
+      transition: opacity .4s ease;
 
       &:hover {
         opacity: 1;
@@ -523,27 +554,10 @@ a.skip:active,a.skip:focus {
     }
   }
 
-  // .nav-btn {
-  //   position: absolute;
-  //   right: 20px;
-  //   top: 20px;
-  //   padding: 15px;
-
-  //   &:before {
-  //     content: '\F000';
-  //     font-family: 'BlackTieBold';
-  //     font-size: 28px;
-  //     font-size: 2.8rem;
-  //     line-height: 34px;
-  //     line-height: 3.4rem;
-  //     color: $white;
-  //   }
-  // }
-
 // START BURGER
   .nav-btn {
-    width: 42px;
-    height: 37px;
+    width: 39px;
+    height: 34px;
     position: absolute;
     top: 35px;
     right: 35px;
@@ -552,16 +566,17 @@ a.skip:active,a.skip:focus {
     -moz-transform: rotate(0deg);
     -o-transform: rotate(0deg);
     transform: rotate(0deg);
-    -webkit-transition: .5s ease-in-out;
-    -moz-transition: .5s ease-in-out;
-    -o-transition: .5s ease-in-out;
-    transition: .5s ease-in-out;
+    // -webkit-transition: .5s ease-in-out;
+    // -moz-transition: .5s ease-in-out;
+    // -o-transition: .5s ease-in-out;
+    // transition: .5s ease-in-out;
+    transition: top .4s ease;
     cursor: pointer;
 
     span {
       display: block;
       position: absolute;
-      height: 6px;
+      height: 5px;
       width: 100%;
       background: $white;
       opacity: 1;
@@ -584,20 +599,14 @@ a.skip:active,a.skip:focus {
 
   .nav-btn span:nth-child(2),
   .nav-btn span:nth-child(3) {
-    top: 15px;
+    top: 14px;
   }
 
   .nav-btn span:nth-child(4) {
-    top: 30px;
+    top: 28px;
   }
 
-  // end Burger
-
-
-  &.fixed {
-    background-color: $greyBlue;
-    box-shadow: 0px 7px 12px -7px rgba(50,50,50,0.75);
-  }
+  // end Burger  
 }
 
 .carousel {
@@ -1577,6 +1586,38 @@ footer {
 
 @media all and (max-width: 1023px) {
 
+  .no-scroll {
+    position: fixed;
+    overflow: hidden;
+    width: 100%;
+
+  }
+
+  body {
+    &.menu-open {
+
+      .wrapper>header .nav-bg {
+        right: 0;
+      }
+    }
+
+    &.fixed {
+      .wrapper>header .nav li {
+        opacity: 1;
+        line-height: 48px;
+        line-height: 4.8rem;
+      }
+
+      &.menu-open {
+        .wrapper>header .nav a {
+          color: $white;
+        }
+        .wrapper>header .nav-btn span {
+          background: $white;
+        }
+      }
+    }
+  }
 
   .mobile {
     display: block!important;
@@ -1588,6 +1629,13 @@ footer {
 
   .wrapper > header {
 
+    &.menu-open {
+      .nav-bg {
+       display: block;
+       right: 0;
+     }
+    }
+
     &.fixed {
       //min-height: 80px;
       .wrapper-logo {width: auto!important;}
@@ -1597,29 +1645,14 @@ footer {
       }
 
       &.menu-open {
-        background-color: $torquoise;
 
         .logo {
           // background: url(/assets/img/icons/logo-small-white.png) no-repeat;
         }
-        .nav-btn {
-          color: $white;
-
-          &:hover, &:focus {
-            color: $lightOrange;
-          } 
-        }
 
         .nav-bg, .nav {
           display: block;
-          width: 100%;
-
-          a { 
-            color: $white; 
-            &:hover, &:focus {
-              color: $lightOrange;
-            }
-          }
+          width: 100%;          
         }
 
         .nav {
@@ -1630,22 +1663,25 @@ footer {
 
     .nav-btn { display: block; }
     .nav-bg {
-      display: none;
       position: fixed;
-      top: 60px;
-      left: 0;
-      right: 0;
+      top: 0;
+      right: -50%;
+      width: 50%;
       height: 100%;
       margin-top: 0;
-      background-color: $torquoise;
+      padding: 0;
+      background-color: $greyBlue;
+      box-shadow: -3px 0px 5px 0px rgba($black, .35);
+      transition: right 0.5s ease;
     }
     .nav {
-      margin-top: 0;
-      top: 50%;
-      margin-top: -214px; // half menu height + 60px from top margin of nav-bg
+      top: 0;
+      margin-top: 130px; // half menu height + 60px from top margin of nav-bg
       li {
         width: 100%;
         margin: 0;
+        line-height: 48px;
+        line-height: 4.8rem;
       }
 
       a {
@@ -1654,10 +1690,6 @@ footer {
         padding: 10px 0;
         color: $white;
         display: block;
-
-        &:hover, &:focus {
-          color: $lightOrange;
-        }
       }
     }
   }
