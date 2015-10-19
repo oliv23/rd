@@ -6,22 +6,10 @@
 					navBtn = $('.nav-btn'),
 					body = $('body'),
 					hasCarousel = $('.hero').find('.carousel'),
-					//navlink = $('.nav-link'),
-					//expBtn = $('.bttn-exp'),
-					// expBtnText = $('.bttn-exp').text(),
-					// techFrame,
 					$window = $(window),
-					// btnPlay = $('.vid-btn'),
-					// btnText = btnPlay.text(),
-					//poster = $('.vid-ph'),
-					// iframe = $('#vid1')[0],
-					// vid = $f(iframe),
-					// vidPlaying = false,
 					$carousel = $('.carousel'),
 					mapABoxText = '<h6>LONDON</h6><p>109-123 Clifton Street,<br>London,<br>EC2A 4LD</p><p class="call">Call us <a href="tel:+442077291000">+44 (0)20 7729 1000</a></p><p class="email">Email us <a href="mailto:hello@rhapsodydigital.co.uk">hello@rhapsodydigital.co.uk</a></p>',
 					mapBBoxText = '<h6>READING</h6><p>Wyvols Court,<br>Swallowfield,<br>Reading,<br>RG7 1WY</p><p class="call">Call us <a href="tel:+448458723494">+44 (0)845 872 3494</a></p><p class="email">Email us <a href="mailto:michael.faris@rhapsodymedia.co.uk">michael.faris@rhapsodymedia.co.uk</a></p>',
-					//readMore = $('.read-more'),
-					// $newsTemplate = $('.hbs-news-posts'),
 
 					handleScrollFn = function () {
 						if ($window.scrollTop() < 250) {
@@ -151,10 +139,6 @@
 						
 					};
 
-					// handleNavLink = function (e) {
-					// 	header.removeClass('menu-open');
-					// 	e.preventDefault();
-					// },
 					if ($('.map').length) {
 						initMap(51.5236779, -0.0833322, 'mapA', 17, mapABoxText); //rhapsody london
 						initMap(51.379355, -0.961820, 'mapB', 15, mapBBoxText); //rhapsody reading
@@ -162,9 +146,7 @@
 
 					$window.on('scroll', handleScrollFn);
 					navBtn.on('click', handleNav);
-					// navlink.on('click', handleNavLink);
 					$(header).scrollupbar();
-					//handleScrollFn();
 					wow.init();
 
 			if ($window.innerWidth() < 1025) {
@@ -184,7 +166,7 @@
 		    slidesToScroll: 1,
 		    arrows: false,
 		    swipe: true,
-		    autoplay: false,
+		    autoplay: true,
 		    pauseOnHover: true,
 		    autoplaySpeed: 4000,
 		    infinite: true,
@@ -210,23 +192,23 @@
 					count = 0;
 
 			function panelAnim(arr) {
-			    if (count == arr.length) {
-			        count = 0;
-			    }
+		    if (count == arr.length) {
+		        count = 0;
+		    }
 
-			    panelTerms = terms[count].split(',');
+		    panelTerms = terms[count].split(',');
 
-			    var term = panelTerms[Math.floor(Math.random() * panelTerms.length)];
-			    
-			    $(panels).removeClass('anim')
-						.eq(count).addClass('anim')
-							.find('.back p').text(term);
+		    var term = panelTerms[Math.floor(Math.random() * panelTerms.length)];
+		    
+		    $(panels).removeClass('anim')
+					.eq(count).addClass('anim')
+						.find('.back p').text(term);
 
-					count++;
-			    
-			    setTimeout(function () {
-			        panelAnim(panels);
-			    }, 1700);
+				count++;
+		    
+		    setTimeout(function () {
+		        panelAnim(panels);
+		    }, 1700);
 			}
 
 			if (panels.length) {
