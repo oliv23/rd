@@ -117,13 +117,13 @@ body {
       height: 70px;
 
       .nav-btn {
-        top: 18px;
+        top: 23px;
         transition: top 0s ease;
 
         span { background: $greyBlue; }
       }
 
-      .logo {
+      .logo, .logo-invert {
         width: 132px;
         height: 40px;
         margin-top: 14px; 
@@ -165,7 +165,7 @@ body {
       }
 
       .nav-btn span:nth-child(2) {
-        top: 15px;
+        top: 11px;
         -webkit-transform: rotate(45deg);
         -moz-transform: rotate(45deg);
         -o-transform: rotate(45deg);
@@ -184,6 +184,28 @@ body {
         width: 0%;
         left: 50%;
       }//end Burger      
+    }
+  }
+
+  &.invert {
+    .wrapper>header {
+      background: $white;
+
+      .logo-invert { display: block; }
+      .logo { display: none; }
+      .nav-btn span { background: $greyBlue; }
+      .nav a { color: $greyBlue; }
+    }
+
+    .hero {
+      background: $greyBlue;
+      min-height: 320px;
+
+      h1 {
+        color: $white;
+        text-align: center;
+        padding: 200px 20px 0 20px;
+      }
     }
   }
 }
@@ -353,8 +375,8 @@ p {
   font-family: 'supralight';
   font-size: 16px;
   font-size: 1.6rem;
-  line-height: 22px;
-  line-height: 2.2rem;
+  line-height: 24px;
+  line-height: 2.4rem;
   letter-spacing: 0.2px;
   letter-spacing: 0.02rem;
   color: $darkGrey;
@@ -445,6 +467,7 @@ ul {
     font-size: 2.8rem;
     line-height: 34px;
     line-height: 3.4rem;
+    padding-bottom: 0;
     border: none;
     background: transparent;
 
@@ -498,7 +521,7 @@ a.skip:active,a.skip:focus {
   z-index: 999;
   transition: background 0.4s ease;  
 
-  .logo {
+  .logo, .logo-invert {
     position: absolute;
     left: 25px;
     width: 179px;
@@ -509,10 +532,12 @@ a.skip:active,a.skip:focus {
     @include icons-sprite("rd_logo1");
   }
 
+  .logo-invert { display: none; @include icons-sprite("rd_logo_blue"); }
+
   .nav-bg {
     margin: 0 auto;
-    text-align: center;
-    padding-left: 200px;
+    text-align: right;
+    padding: 0 100px 0 200px;
   }
 
   .nav {
@@ -532,7 +557,7 @@ a.skip:active,a.skip:focus {
     li {
       display: inline-block;
       margin: 0;
-      line-height: 110px;
+      line-height: 100px;
       vertical-align: middle;
       opacity: 0;
       transition: opacity 0.4s ease, line-height 0.4s ease
@@ -556,8 +581,8 @@ a.skip:active,a.skip:focus {
 
 // START BURGER
   .nav-btn {
-    width: 39px;
-    height: 34px;
+    width: 33px;
+    height: 28px;
     position: absolute;
     top: 35px;
     right: 35px;
@@ -599,11 +624,11 @@ a.skip:active,a.skip:focus {
 
   .nav-btn span:nth-child(2),
   .nav-btn span:nth-child(3) {
-    top: 14px;
+    top: 11px;
   }
 
   .nav-btn span:nth-child(4) {
-    top: 28px;
+    top: 22px;
   }
 
   // end Burger  
@@ -648,7 +673,11 @@ a.skip:active,a.skip:focus {
   min-height: 768px;
 
   .carousel {
-    min-height: 768px;  
+    min-height: 768px;
+
+    &.no-dots .wrapper-intro  {
+      bottom: 40px;
+    }
 
     .slide, .img {
       min-height: 768px;
@@ -789,10 +818,13 @@ aside {
   
   .item {
     width: 50%;
-    height: 384px;
     background-color: $black;
     display: inline-block;
     position: relative;
+
+    img {
+      width: 100%;
+    }
 
     &.show {
       .img + .wrap {
@@ -801,8 +833,8 @@ aside {
         transition: background .7s ease;
 
         .inner {
-        opacity: 1;
-        transform: translate3d(0,0,0) scale(0);
+        opacity: 0;
+        transform: translate3d(0,0,0) scale(0.5);
         transition: all 0.3s ease-out;
         }
       }
@@ -811,7 +843,7 @@ aside {
 
   @for $i from 1 through 6 {
     .item#{$i} .img {
-      background-image: url(/assets/img/components/item#{$i}.jpg)
+      // background-image: url(/assets/img/components/item#{$i}.jpg)
     }
   }
 
@@ -855,6 +887,7 @@ aside {
       line-height: 2.4rem;
       margin-top: -5px; //to v align with heading opposite
       margin-bottom: 15px;
+      max-width: 650px;
     }
 
     .twitter, .linkedin {
@@ -894,9 +927,7 @@ aside {
     right: 0;
     top: 0;
     bottom: 0;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    display: block;
 
     &:hover, &:focus, &.active {
       + .wrap {
@@ -910,6 +941,11 @@ aside {
         transition: all 0.3s ease-out;
         }
       }
+
+      img {
+        opacity: 1;
+        filter: alpha(opacity=100);
+      }
     }
 
     &.active {
@@ -920,8 +956,8 @@ aside {
           transition: background .7s ease;
 
           .inner {
-          opacity: 1;
-          transform: translate3d(0,0,0) scale(0);
+          opacity: 0;
+          transform: translate3d(0,0,0) scale(0.5);
           transition: all 0.3s ease-out;
           }
         }
@@ -930,24 +966,36 @@ aside {
   }   
 
   .wrap {
-    display: table;
+    display: inline-block;
+    position: absolute;
     height: 100%;
     width: 100%;
+    top: 0;
+    left: 0;
     opacity: 0;
     pointer-events: none;
-    position: relative;
+    // position: relative;
     z-index: 2;
     background: rgba($black, 0);
     transition: all .7s ease;
 
-    .inner {
-      display: table-cell;
+    &:before {
+      content: '';
+      display: inline-block;
+      height: 100%;
       vertical-align: middle;
+      margin-right: -0.4em;
+    }
+
+    .inner {
+      display: inline-block;
+      vertical-align: middle;
+      width: 100%;
       text-align: center;
       position: relative;
       z-index: 1;
       opacity: 0;
-      transform: translate3d(0,0,0) scale(0);
+      transform: translate3d(0,0,0) scale(0.5);
       transform-origin: center;
       transition: all 0.2s ease-out; 
     }
@@ -999,7 +1047,6 @@ aside {
   &.similar, &.management {
     .item {
       width: 33.33%;
-      height: 256px;
     }
 
     h3 {
@@ -1013,7 +1060,6 @@ aside {
   &.management {
     .item {
       width: 25%;
-      height: 256px;
       overflow: hidden;
 
       &:after {
@@ -1058,7 +1104,7 @@ aside {
 
 .service {
   display: inline-block;
-  margin: 0 35px 40px;
+  margin: 0 35px 0;
   text-align: center;
   vertical-align: top;
   max-width: 170px;
@@ -1067,10 +1113,17 @@ aside {
     display: block;    
     &:hover {
 
-      .panel .front {
+      .panel .front, .panel .back {
         border-color: $black;
       }
-      .panel .front p, .panel .back p, h4 {
+      .panel .back {
+        background: $black;
+
+        p {
+          color: $white;
+        }
+      }
+      .panel .front p, h4, h5 {
           color: $black;
           transition: all .4s ease;
       } 
@@ -1079,6 +1132,7 @@ aside {
 
   h5 {
     text-transform: uppercase;
+    padding: 13px 0 5px;
     transition: all .4s ease;
   }
 }
@@ -1196,8 +1250,8 @@ aside {
     display: inline-block;
     vertical-align: middle;
     font-family: 'suprademibold';
-    font-size: 20px;
-    font-size: 2rem;
+    font-size: 18px;
+    font-size: 1.8rem;
     line-height: 24px;
     line-height: 2.4rem;
     color: $white;
@@ -1483,15 +1537,6 @@ footer {
     font-family: 'FontAwesome';
   }
 
-.contact {
-  margin: 20px 0 50px;
-
-  li {
-    display: block;
-    text-align: left;    
-  }
-}
-
 footer {
   float: left;
   width: 100%;
@@ -1523,6 +1568,15 @@ footer {
     margin: 0;
     -webkit-font-smoothing: subpixel-antialiased;
     -moz-osx-font-smoothing: auto;
+  }
+
+  .contact {
+    margin: 20px 0 50px;
+
+    li {
+      display: block;
+      text-align: left;    
+    }
   }
 }
 
@@ -1574,6 +1628,21 @@ footer {
 }
 
 @media all and (max-width: 1024px) {
+  body {
+    &.contact {
+      .hero, .hero .carousel {
+        height: auto!important;
+        min-height: 0!important;
+      }
+      .hero .carousel .slide {
+        height: auto!important;
+      }
+      .map {
+        min-height: 0;
+        height: 50vh
+      }
+    }
+  }
   .hero, .hero .carousel .slide, .hero .carousel .img {
     min-height: 0;
     height: 100%;
@@ -1591,7 +1660,7 @@ footer {
     overflow: hidden;
     width: 100%;
 
-  }
+  }  
 
   body {
     &.menu-open {
@@ -1617,6 +1686,25 @@ footer {
         }
       }
     }
+
+    &.invert {
+      &.fixed {
+        .wrapper > header { height: 70px; }
+      }
+      &.menu-open {
+        .wrapper > header {
+          .nav-btn span { background: $white; }
+        }
+      }
+      .wrapper > header {
+        // .logo-invert { display: none; }
+        // .logo { display: block; }
+        // .nav-btn span { background: $white; }
+        .nav a { color: $white; }
+        height: 100px;
+      }
+      .hero { min-height: 320px; }
+    } 
   }
 
   .mobile {
@@ -1730,14 +1818,15 @@ footer {
 
 
 @media all and (max-width: 767px) {
-
-  .map {
-    min-height: 50vh;
-  }
-
   .grid {
     .item {
       width: 100%;
+    }
+
+    &.similar {
+      .item {
+        width: 100%;
+      }
     }
 
     &.management {
@@ -1783,11 +1872,20 @@ footer {
 
 @media all and (max-width: 480px) {
 
-  .map {
-    width: 100%;
-    min-height: 30vh;
-
+  body {
+    &.contact {
+      .map {
+        height: 30vh;
+        width: 100%;
+      }
+    }
   }
+
+  .wrapper>header .nav-bg {
+    right: -100%;
+    width: 100%;
+  }
+
   .grid {
     &.management {
       .item {
@@ -1803,8 +1901,8 @@ footer {
           transition: background .7s ease;
 
           .inner {
-          opacity: 1;
-          transform: translate3d(0,0,0) scale(0);
+          opacity: 0;
+          transform: translate3d(0,0,0) scale(0.5);
           transition: all 0.3s ease-out;
           }
         }

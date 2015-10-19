@@ -59,6 +59,14 @@
       margin-top: 60px;
     }
 
+    &.m-top-lrg {
+      margin-top: 130px;
+    }
+
+    &.m-bot-lrg {
+      margin-bottom: 130px;
+    }
+
     &.no-padding {
       padding-left: 0;
       padding-right: 0;
@@ -77,6 +85,10 @@
       margin-left: 20px;
       vertical-align: top;
       // text-align: left;
+
+      > p:last-child {
+        margin-bottom: 0
+      }
 
       &.no-margin {
         margin-left: 0!important;

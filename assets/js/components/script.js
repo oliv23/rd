@@ -5,6 +5,7 @@
 			var header = $('header'),
 					navBtn = $('.nav-btn'),
 					body = $('body'),
+					hasCarousel = $('.hero').find('.carousel'),
 					//navlink = $('.nav-link'),
 					//expBtn = $('.bttn-exp'),
 					// expBtnText = $('.bttn-exp').text(),
@@ -31,11 +32,13 @@
 					},
 
 					resizeHero = function (isMobile) {
-						if (isMobile) {
-							var vHeight = $window.height();
-							$('.hero, .hero .slide').css('height', vHeight + 'px');
-						} else {
-							$('.hero, .hero .slide').css('height', 'auto');
+						if (hasCarousel.length > 0) {
+							if (isMobile) {
+								var vHeight = $window.height();
+								$('.hero, .hero .slide').css('height', vHeight + 'px');
+							} else {
+								$('.hero, .hero .slide').css('height', 'auto');
+							}
 						}
 					},
 
@@ -44,12 +47,12 @@
 					},
 
 					disableTouch = function (menuOpen) {
-						var fixed = document.getElementById('body');
+						var fixed = document.getElementsByTagName('body');
 						
 						if (menuOpen) {
-								fixed.addEventListener('touchmove', touchFn, false);
+								fixed[0].addEventListener('touchmove', touchFn, false);
 							} else {
-								fixed.removeEventListener('touchmove', touchFn);
+								fixed[0].removeEventListener('touchmove', touchFn);
 							}
 					},
 
@@ -72,12 +75,12 @@
 							zoomControl: false,
 							scrollwheel: false,
 
-						// The latitude and longitude to center the map (always required)
-						center: new google.maps.LatLng(lat, lng), // coords
+							// The latitude and longitude to center the map (always required)
+							center: new google.maps.LatLng(lat, lng) // coords
 
-						// How you would like to style the map. 
-						// This is where you would paste any style found on Snazzy Maps.
-						styles: [{'featureType':'landscape','stylers':[{'saturation':-100},{'lightness':65},{'visibility':'on'}]},{'featureType':'poi','stylers':[{'saturation':-100},{'lightness':51},{'visibility':'simplified'}]},{'featureType':'road.highway','stylers':[{'saturation':-100},{'visibility':'simplified'}]},{'featureType':'road.arterial','stylers':[{'saturation':-100},{'lightness':30},{'visibility':'on'}]},{'featureType':'road.local','stylers':[{'saturation':-100},{'lightness':40},{'visibility':'on'}]},{'featureType':'transit','stylers':[{'saturation':-100},{'visibility':'simplified'}]},{'featureType':'administrative.province','stylers':[{'visibility':'off'}]},{'featureType':'water','elementType':'labels','stylers':[{'visibility':'on'},{'lightness':-25},{'saturation':-100}]},{'featureType':'water','elementType':'geometry','stylers':[{'hue':'#ffff00'},{'lightness':-25},{'saturation':-97}]}]
+							// How you would like to style the map. 
+							// This is where you would paste any style found on Snazzy Maps.
+							// styles: [{'featureType':'landscape','stylers':[{'saturation':-100},{'lightness':65},{'visibility':'on'}]},{'featureType':'poi','stylers':[{'saturation':-100},{'lightness':51},{'visibility':'simplified'}]},{'featureType':'road.highway','stylers':[{'saturation':-100},{'visibility':'simplified'}]},{'featureType':'road.arterial','stylers':[{'saturation':-100},{'lightness':30},{'visibility':'on'}]},{'featureType':'road.local','stylers':[{'saturation':-100},{'lightness':40},{'visibility':'on'}]},{'featureType':'transit','stylers':[{'saturation':-100},{'visibility':'simplified'}]},{'featureType':'administrative.province','stylers':[{'visibility':'off'}]},{'featureType':'water','elementType':'labels','stylers':[{'visibility':'on'},{'lightness':-25},{'saturation':-100}]},{'featureType':'water','elementType':'geometry','stylers':[{'hue':'#ffff00'},{'lightness':-25},{'saturation':-97}]}]
 						};
 
 						// Get the HTML DOM element that will contain your map 
@@ -95,6 +98,8 @@
 								title: 'Rhapsody Digital'
 						});
 
+						map.panTo(new google.maps.LatLng(lat,lng));
+
 						var infowindow = new google.maps.InfoWindow(),
 								boxText = document.createElement('div');
 								boxText.innerHTML = infoText;
@@ -104,7 +109,7 @@
 							infowindow.open(map, marker);
 						});
 
-
+						console.log(map);
 					},
 
 					wow = new WOW({
@@ -166,6 +171,12 @@
 				resizeHero(true);
 			}
 
+			$carousel.on('init', function(event, slick){
+			  if (slick.slideCount <= 1) {
+					$carousel.addClass('no-dots');
+			  }
+			});
+
       // Init gallery
 		  $carousel.slick({
 				lazyLoad: 'progressive',
@@ -173,7 +184,7 @@
 		    slidesToScroll: 1,
 		    arrows: false,
 		    swipe: true,
-		    autoplay: true,
+		    autoplay: false,
 		    pauseOnHover: true,
 		    autoplaySpeed: 4000,
 		    infinite: true,
@@ -226,6 +237,10 @@
 			}
 			
 			$('.management .img').on('click', handleInfoBox);
+
+			if (hasCarousel.length <=0) {
+				body.addClass('invert');
+			}
 
 			$window.on('resize', function () {
 				if ($(this).innerWidth() < 1025) {
