@@ -208,6 +208,16 @@ body {
       }
     }
   }
+
+  &.contact {
+    .hero .carousel {
+      min-height: 668px;
+    }
+    .hero .carousel .slide {
+      min-height: 668px;      
+    }
+    .slick-slider { background: $white;}
+  }
 }
 
 a {
@@ -435,6 +445,10 @@ ul {
 
   &.status {
     font-size: 16px;
+
+    li {
+      margin-bottom: 15px;
+    }
   }
 }
 
@@ -1345,9 +1359,12 @@ aside {
 
 .map {
   display: inline-block;
-  width: 50%;
-  min-height: 768px;
+  width: 49.5%;
   height: 100%;
+  margin-top: 100px;
+  min-height: 668px;
+
+  &:first-of-type {margin-right: 1%;}
 }
 
 .gm-style {
@@ -1877,6 +1894,11 @@ footer {
       .map {
         height: 30vh;
         width: 100%;
+        margin-top: 10px;
+        &:first-of-type {
+          margin-right: 0;
+          margin-top: 100px;
+        }
       }
     }
   }

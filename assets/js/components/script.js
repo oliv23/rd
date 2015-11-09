@@ -82,7 +82,7 @@
 						var marker = new google.maps.Marker({
 								position: new google.maps.LatLng(lat, lng),
 								map: map,
-								icon: 'assets/img/structure/' + el + '-map-marker.png',
+								icon: '/rhapsodydigitalwebsite/wp-content/themes/rhapsody-digital/assets/img/structure/' + el + '-map-marker.png',
 								title: 'Rhapsody Digital'
 						});
 
@@ -96,8 +96,6 @@
 							infowindow.setContent(boxText);
 							infowindow.open(map, marker);
 						});
-
-						console.log(map);
 					},
 
 					wow = new WOW({

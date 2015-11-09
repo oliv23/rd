@@ -23,7 +23,7 @@ module.exports = function (grunt) {
           'assets/js/framework/*.js',
           'assets/js/lib/*.js'
         ],
-        tasks: ['build']
+        tasks: ['jshint', 'concat', 'uglify']
       },
 
       bake: {
