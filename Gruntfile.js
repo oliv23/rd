@@ -89,7 +89,8 @@ module.exports = function (grunt) {
             'dist/template7.html': 'templates/layout/template7.html',
             'dist/template8.html': 'templates/layout/template8.html',
             'dist/template9.html': 'templates/layout/template9.html',
-            'dist/template10.html': 'templates/layout/template10.html'
+            'dist/template10.html': 'templates/layout/template10.html',
+            'dist/template11.html': 'templates/layout/template11.html'
         }
       }
     },
